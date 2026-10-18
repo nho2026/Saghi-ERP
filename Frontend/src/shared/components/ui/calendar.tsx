@@ -8,6 +8,7 @@ export function Calendar({
   className,
   classNames,
   showOutsideDays = true,
+  components,
   ...props
 }: DayPickerProps) {
   const { i18n, t } = useTranslation();
@@ -60,6 +61,7 @@ export function Calendar({
           ) : (
             <ChevronRight className="size-4 rtl:rotate-180" />
           ),
+        ...components,
       }}
       {...props}
     />

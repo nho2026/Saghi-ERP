@@ -2127,6 +2127,15 @@
     }
   },
   "employeePortal": {
+    "attendance": {
+      "title": "My attendance",
+      "description": "Browse your monthly attendance and select a day to see its details.",
+      "legend": "Attendance status",
+      "notLinked": "Your account is not linked to an employee record. Contact HR to view your attendance.",
+      "emptyMonth": "No attendance records for this month.",
+      "timezone": "Check-in and check-out times are shown in Baghdad time.",
+      "duration": "{{hours}} h {{minutes}} m"
+    },
     "welcome": "Welcome back, {{name}}",
     "welcomeDescription": "A little clarity for your workday. Keep track of your tasks, share your ideas, and stay connected with your team.",
     "activeTasks": "Active tasks",

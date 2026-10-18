@@ -41,6 +41,7 @@ import {
   TabsTrigger,
 } from "@/shared/components/ui/tabs";
 import { employeePortalApi } from "../api/employee-portal.api";
+import { AttendanceCalendar } from "../components/AttendanceCalendar";
 
 const inactiveStatuses = new Set(["completed", "cancelled", "rejected"]);
 const taskFilters = ["active", "all", "completed"] as const;
@@ -263,6 +264,8 @@ export default function EmployeePortalPage() {
           </Card>
         ))}
       </div>
+
+      <AttendanceCalendar />
 
       <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)]">
         <div className="min-w-0 space-y-6">

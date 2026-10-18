@@ -1,6 +1,18 @@
 import { employeePortalService } from "./employee-portal.service.js";
 
 export const employeePortalController = {
+  myAttendance: async (req, res, next) => {
+    try {
+      res.json(
+        await employeePortalService.myAttendance({
+          user: req.user,
+          month: req.attendanceQuery.month,
+        }),
+      );
+    } catch (error) {
+      next(error);
+    }
+  },
   myTasks: async (req, res, next) => {
     try {
       res.json(await employeePortalService.myTasks({ user: req.user }));

@@ -44,6 +44,7 @@ export function requestPermission(method, url) {
     ["GET", "HEAD"].includes(method) &&
     [
       "/employee-portal/my-tasks",
+      "/employee-portal/my-attendance",
       "/employee-portal/ideas",
       "/employee-portal/warnings",
     ].includes(path)

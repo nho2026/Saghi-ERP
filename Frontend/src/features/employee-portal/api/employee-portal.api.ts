@@ -1,4 +1,12 @@
 import { apiClient } from "@/shared/api/client";
+export type MyAttendanceRecord = {
+  attendanceDate: string;
+  checkIn: string | null;
+  checkOut: string | null;
+  workedMinutes: number;
+  lateMinutes: number;
+  status: string;
+};
 export type MyTask = {
   id: string;
   title: string;
@@ -28,6 +36,13 @@ export type EmployeeWarning = {
   };
 };
 export const employeePortalApi = {
+  attendance: (month: string) =>
+    apiClient
+      .get<{ linked: boolean; records: MyAttendanceRecord[] }>(
+        "/employee-portal/my-attendance",
+        { params: { month } },
+      )
+      .then((r) => r.data),
   tasks: () =>
     apiClient.get<MyTask[]>("/employee-portal/my-tasks").then((r) => r.data),
   ideas: () =>
