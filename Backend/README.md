@@ -1,4 +1,26 @@
 
+## Development API connection errors
+
+Vite proxies `/api`, `/socket.io`, and `/public` to `http://127.0.0.1:4000`.
+`ECONNREFUSED` means the backend is not accepting connections there. Run
+`npm run dev` in `Backend` and `Frontend` in separate terminals and wait for
+`API listening` in the backend terminal. In PowerShell, use `npm.cmd` if script
+execution policy blocks `npm.ps1`.
+
+The backend uses Node watch mode in development, so saving backend dependencies
+can briefly interrupt connections while it restarts. Permission catalog sync
+must finish before the API starts listening. Temporary database connection,
+timeout, and transaction conflict errors retry up to five times, with delays
+of 1, 2, 4, 8, and 15 seconds. Permanent errors (including invalid credentials
+and missing tables) still stop startup and must be fixed.
+
+If refusals persist, check the backend terminal for the first startup/crash error
+and run `npm run diagnose:api` from `Backend`. This checks local HTTP health and
+database connectivity without changing data. For a frontend proxy check, run
+`npm run diagnose:api -- http://127.0.0.1:3000/api/health --http-only`.
+Restart Vite after changing its proxy configuration. If you intentionally run
+the backend on a different port, update all three proxy targets to match.
+
 ## Claude replies for WhatsApp
 
 The CRM can automatically answer incoming text messages using the Anthropic Messages API.
