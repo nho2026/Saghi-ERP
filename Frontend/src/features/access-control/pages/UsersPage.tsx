@@ -349,7 +349,7 @@ export default function UsersPage() {
                       <div className="flex flex-wrap items-center gap-2 justify-end">
                         {canUpdate && (
                           <Button
-                            data-action="unlock-attempts"
+                            permission="update"
                             variant="ghost"
                             size="icon"
                             aria-label={t("usersAdmin.unlockAttempts")}

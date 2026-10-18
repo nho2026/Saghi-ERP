@@ -1,6 +1,6 @@
 import JsBarcode from "jsbarcode";
 import defaultLogo from "@/assets/icons/logo.png";
-import type { RecordItem } from "../api/inventory.api";
+import type { RecordItem } from "../../api/inventory.api";
 import { settingsSnapshot } from "@/features/settings/settings";
 const esc = (v: unknown) =>
   String(v ?? "").replace(

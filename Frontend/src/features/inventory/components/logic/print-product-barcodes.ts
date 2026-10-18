@@ -1,6 +1,6 @@
 import { toast } from "sonner";
 import { renderBarcode } from "./render-barcode";
-import type { RecordItem } from "../api/inventory.api";
+import type { RecordItem } from "../../api/inventory.api";
 
 export function printProductBarcode(
   product: RecordItem,
