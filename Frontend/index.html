@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/src/assets/icons/logo.png" />
+    <link rel="apple-touch-icon" href="/src/assets/icons/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07599a" />
+    <script>
+      (() => {
+        const saved = localStorage.getItem("nho-theme");
+        const theme =
+          saved === "light" || saved === "dark"
+            ? saved
+            : matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+    <title>ERP</title>
+    <style>
+      #app-loader {
+        position: fixed;
+        z-index: 9999;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        color: #102a43;
+        background:
+          radial-gradient(
+            circle at 50% 42%,
+            rgb(32 180 184 / 10%),
+            transparent 32rem
+          ),
+          #f6f9fc;
+        transition:
+          opacity 300ms ease,
+          visibility 350ms ease;
+      }
+
+      #app-loader::before,
+      #app-loader::after {
+        content: "";
+        position: absolute;
+        width: 19rem;
+        height: 19rem;
+        border-radius: 50%;
+        filter: blur(2px);
+        opacity: 0.08;
+      }
+
+      #app-loader::before {
+        top: -9rem;
+        right: -7rem;
+        background: #07599a;
+      }
+
+      #app-loader::after {
+        bottom: -10rem;
+        left: -7rem;
+        background: #20b4b8;
+      }
+
+      .app-loader__content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: min(88vw, 25rem);
+        text-align: center;
+      }
+
+      .app-loader__logo-wrap {
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        border: 1px solid rgb(7 89 154 / 10%);
+        border-radius: 2rem;
+        background: #fff;
+        box-shadow: 0 18px 50px rgb(16 42 67 / 13%);
+        animation: loader-arrive 650ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      }
+
+      .app-loader__logo {
+        width: 13rem;
+        height: 13rem;
+        object-fit: contain;
+      }
+
+      .app-loader__name {
+        margin: 1.35rem 0 0.2rem;
+        color: #07599a;
+        font:
+          700 1.35rem/1.2 system-ui,
+          sans-serif;
+        letter-spacing: 0.16em;
+      }
+
+      .app-loader__caption {
+        margin: 0;
+        color: #52677a;
+        font:
+          500 0.72rem/1.4 system-ui,
+          sans-serif;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      .app-loader__progress {
+        width: 7rem;
+        height: 3px;
+        margin-top: 1.75rem;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgb(7 89 154 / 12%);
+      }
+
+      .app-loader__progress::after {
+        content: "";
+        display: block;
+        width: 42%;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #07599a, #20b4b8);
+        animation: loader-progress 1.15s ease-in-out infinite;
+      }
+
+      #app-loader.app-loader--hidden {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      @keyframes loader-arrive {
+        from {
+          opacity: 0;
+          transform: translateY(8px) scale(0.96);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes loader-progress {
+        from {
+          transform: translateX(-115%);
+        }
+        to {
+          transform: translateX(240%);
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        #app-loader {
+          color: #f0f7fa;
+          background:
+            radial-gradient(
+              circle at 50% 42%,
+              rgb(79 208 210 / 11%),
+              transparent 32rem
+            ),
+            #07151f;
+        }
+        .app-loader__logo-wrap {
+          border-color: rgb(79 208 210 / 14%);
+          background: #fff;
+          box-shadow: 0 18px 55px rgb(0 0 0 / 35%);
+        }
+        .app-loader__name {
+          color: #75b9e8;
+        }
+        .app-loader__caption {
+          color: #b8cad4;
+        }
+        .app-loader__progress {
+          background: rgb(79 208 210 / 15%);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #app-loader,
+        .app-loader__logo-wrap {
+          transition: none;
+          animation: none;
+        }
+        .app-loader__progress::after {
+          animation-duration: 2.5s;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="app-loader"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading workspace"
+    >
+      <div class="app-loader__content">
+        <div class="app-loader__logo-wrap">
+          <img
+            class="app-loader__logo"
+            src="/src/assets/icons/logo.png"
+            alt="ERP Organization"
+          />
+        </div>
+        <p class="app-loader__name"></p>
+        <p class="app-loader__caption"></p>
+        <div class="app-loader__progress" aria-hidden="true"></div>
+      </div>
+    </div>
+    <script>
+      (() => {
+        try {
+          const branding = JSON.parse(
+            localStorage.getItem("nho-branding") || "null",
+          );
+          const language = (
+            localStorage.getItem("nho-language") ||
+            navigator.language ||
+            "en"
+          ).split("-")[0];
+          const loading = {
+            en: "Loading your workspace…",
+            ar: "جارٍ تحميل مساحة العمل…",
+            ku: "بۆشایی کارەکەت بار دەکرێت…",
+          };
+          const caption =
+            branding?.loadingText || loading[language] || loading.en;
+          document.querySelector(".app-loader__caption").textContent = caption;
+          document
+            .getElementById("app-loader")
+            .setAttribute("aria-label", caption);
+          document.querySelector(".app-loader__content").dir = [
+            "ar",
+            "ku",
+          ].includes(language)
+            ? "rtl"
+            : "ltr";
+          if (branding && typeof branding.name === "string") {
+            document.title = branding.name;
+            document.querySelector(".app-loader__name").textContent =
+              branding.name;
+            const image = document.querySelector(".app-loader__logo");
+            image.alt = branding.name;
+            if (
+              typeof branding.logo === "string" &&
+              (/^https:\/\//.test(branding.logo) ||
+                /^data:image\/(png|jpeg|webp);base64,/.test(branding.logo))
+            ) {
+              const fallback = image.src;
+              image.onerror = () => {
+                image.onerror = null;
+                image.src = fallback;
+              };
+              image.src = branding.logo;
+              document
+                .querySelectorAll(
+                  'link[rel="icon"], link[rel="apple-touch-icon"]',
+                )
+                .forEach((icon) => {
+                  icon.href = branding.logo;
+                });
+            }
+          }
+        } catch {
+          /* Keep the default loader if browser storage is unavailable. */
+        }
+      })();
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

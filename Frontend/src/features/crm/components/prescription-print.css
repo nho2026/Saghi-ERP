@@ -1,0 +1,242 @@
+@page {
+  size: A4;
+  margin: 14mm;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #eaf0f2;
+  color: #19323b;
+  font-size: 13px;
+  line-height: 1.6;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.toolbar {
+  max-width: 800px;
+  margin: 20px auto 12px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 16px;
+}
+button {
+  border: 0;
+  border-radius: 9px;
+  background: #1c9b49;
+  color: #fff;
+  padding: 11px 20px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.sheet {
+  max-width: 800px;
+  min-height: 1000px;
+  margin: 0 auto 28px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 12px 45px #12333a15;
+  border-top: 6px solid #1c9b49;
+}
+header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #dce7e7;
+}
+.logo {
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+h1 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+}
+.contact {
+  margin-top: 7px;
+  color: #6b7d83;
+  font-size: 11px;
+}
+.document-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 28px 0 18px;
+}
+.document-heading h2 {
+  font-size: 20px;
+  margin: 0;
+  color: #1c9b49;
+}
+.rx {
+  font:
+    36px Georgia,
+    serif;
+  color: #1c9b49;
+}
+.meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #dce7e7;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 26px;
+}
+.field {
+  padding: 14px 18px;
+}
+.field:nth-child(-n + 2) {
+  background: #f0f7f6;
+  border-bottom: 1px solid #dce7e7;
+}
+.label {
+  display: block;
+  font-size: 10px;
+  color: #687c83;
+  margin-bottom: 5px;
+}
+.value {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.medicine {
+  border: 1px solid #dce7e7;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  break-inside: avoid;
+}
+.medicine-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e6eded;
+}
+.number {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #e8f5f2;
+  color: #1c9b49;
+  font-weight: 700;
+}
+h3 {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.directions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 14px 16px;
+  gap: 14px;
+}
+.directions .value {
+  font-size: 13px;
+}
+.instructions {
+  margin: 0;
+  padding: 12px 16px;
+  background: #f8fafb;
+  border-top: 1px solid #e6eded;
+}
+p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.notes {
+  margin-top: 22px;
+  padding: 16px;
+  border-inline-start: 3px solid #1c9b49;
+  background: #f0f7f6;
+  border-radius: 0 8px 8px 0;
+  break-inside: avoid;
+}
+.notes p {
+  margin: 4px 0 0;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-top: 55px;
+  padding-top: 20px;
+  border-top: 1px solid #dce7e7;
+  break-inside: avoid;
+}
+.reference {
+  color: #7b8e94;
+  font-size: 9px;
+  overflow-wrap: anywhere;
+  max-width: 55%;
+}
+.signature {
+  min-width: 190px;
+  text-align: center;
+}
+.signature-line {
+  height: 30px;
+  border-bottom: 1px solid #607780;
+  margin-bottom: 7px;
+}
+@media screen and (max-width: 600px) {
+  .sheet {
+    padding: 22px;
+    border-radius: 0;
+  }
+  .directions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  h1 {
+    font-size: 21px;
+  }
+  .logo {
+    width: 64px;
+    height: 64px;
+  }
+}
+@media print {
+  body {
+    background: #fff;
+    font-size: 11px;
+  }
+  .toolbar {
+    display: none;
+  }
+  .sheet {
+    max-width: none;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  header {
+    padding-bottom: 18px;
+    border-bottom: 2px solid #1c9b49;
+  }
+  .medicine,
+  .meta,
+  .notes {
+    box-shadow: none;
+  }
+}

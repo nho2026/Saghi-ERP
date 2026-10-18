@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { validate } from "../../shared/middleware/validation.middleware.js";
+import { feedbackController as c } from "./feedback.controller.js";
+import { feedbackSchema } from "./feedback.schema.js";
+const router = Router();
+router.get("/", c.publicList);
+router.post("/", validate(feedbackSchema), c.create);
+router.get("/targets", c.targets);
+router.get("/summary", c.summary);
+export default router;

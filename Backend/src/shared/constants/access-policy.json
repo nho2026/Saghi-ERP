@@ -1,0 +1,3900 @@
+{
+  "catalog": [
+{"key":"building-expenses.view","module":"building-expenses","name":"view building expenses"},
+{"key":"building-expenses.create","module":"building-expenses","name":"create building expenses"},
+{"key":"building-expenses.update","module":"building-expenses","name":"update building expenses"},
+{"key":"building-expenses.approve","module":"building-expenses","name":"approve building expenses"},
+    {"key": "laboratory.pages.dashboard.view", "module": "laboratory.pages.dashboard", "name": "View laboratory / dashboard"},
+    {"key": "laboratory.pages.reception.view", "module": "laboratory.pages.reception", "name": "View laboratory / reception"},
+    {"key": "laboratory.pages.queue.view", "module": "laboratory.pages.queue", "name": "View laboratory / queue"},
+    {"key": "laboratory.pages.room.view", "module": "laboratory.pages.room", "name": "View laboratory / room"},
+    {"key": "laboratory.pages.tickets.view", "module": "laboratory.pages.tickets", "name": "View laboratory / tickets"},
+    {"key": "laboratory.pages.display.view", "module": "laboratory.pages.display", "name": "View laboratory / display"},
+    {"key": "laboratory.pages.received.view", "module": "laboratory.pages.received", "name": "View laboratory / received"},
+    {"key": "laboratory.pages.completed.view", "module": "laboratory.pages.completed", "name": "View laboratory / completed"},
+    {"key": "laboratory.pages.accounting.view", "module": "laboratory.pages.accounting", "name": "View laboratory / accounting"},
+    {"key": "laboratory.pages.tests.view", "module": "laboratory.pages.tests", "name": "View laboratory / tests"},
+    {"key": "laboratory.display.call", "module": "laboratory.display", "name": "Call laboratory display tickets"},
+    {"key": "laboratory.display.view", "module": "laboratory.display", "name": "View laboratory display management"},
+    {
+      "key": "accounting.accounts.create",
+      "module": "accounting.accounts",
+      "name": "Create accounting / accounts"
+    },
+    {
+      "key": "accounting.accounts.delete",
+      "module": "accounting.accounts",
+      "name": "Delete accounting / accounts"
+    },
+    {
+      "key": "accounting.accounts.export",
+      "module": "accounting.accounts",
+      "name": "Export accounting / accounts"
+    },
+    {
+      "key": "accounting.accounts.print",
+      "module": "accounting.accounts",
+      "name": "Print accounting / accounts"
+    },
+    {
+      "key": "accounting.accounts.update",
+      "module": "accounting.accounts",
+      "name": "Update accounting / accounts"
+    },
+    {
+      "key": "accounting.accounts.view",
+      "module": "accounting.accounts",
+      "name": "View accounting / accounts"
+    },
+    {
+      "key": "accounting.customers.create",
+      "module": "accounting.customers",
+      "name": "Create accounting / customers"
+    },
+    {
+      "key": "accounting.customers.delete",
+      "module": "accounting.customers",
+      "name": "Delete accounting / customers"
+    },
+    {
+      "key": "accounting.customers.export",
+      "module": "accounting.customers",
+      "name": "Export accounting / customers"
+    },
+    {
+      "key": "accounting.customers.print",
+      "module": "accounting.customers",
+      "name": "Print accounting / customers"
+    },
+    {
+      "key": "accounting.customers.update",
+      "module": "accounting.customers",
+      "name": "Update accounting / customers"
+    },
+    {
+      "key": "accounting.customers.view",
+      "module": "accounting.customers",
+      "name": "View accounting / customers"
+    },
+    {
+      "key": "accounting.invoices.create",
+      "module": "accounting.invoices",
+      "name": "Create accounting / invoices"
+    },
+    {
+      "key": "accounting.invoices.delete",
+      "module": "accounting.invoices",
+      "name": "Delete accounting / invoices"
+    },
+    {
+      "key": "accounting.invoices.export",
+      "module": "accounting.invoices",
+      "name": "Export accounting / invoices"
+    },
+    {
+      "key": "accounting.invoices.print",
+      "module": "accounting.invoices",
+      "name": "Print accounting / invoices"
+    },
+    {
+      "key": "accounting.invoices.update",
+      "module": "accounting.invoices",
+      "name": "Update accounting / invoices"
+    },
+    {
+      "key": "accounting.invoices.view",
+      "module": "accounting.invoices",
+      "name": "View accounting / invoices"
+    },
+    {
+      "key": "accounting.journals.create",
+      "module": "accounting.journals",
+      "name": "Create accounting / journals"
+    },
+    {
+      "key": "accounting.journals.delete",
+      "module": "accounting.journals",
+      "name": "Delete accounting / journals"
+    },
+    {
+      "key": "accounting.journals.export",
+      "module": "accounting.journals",
+      "name": "Export accounting / journals"
+    },
+    {
+      "key": "accounting.journals.post",
+      "module": "accounting.journals",
+      "name": "Post accounting / journals"
+    },
+    {
+      "key": "accounting.journals.print",
+      "module": "accounting.journals",
+      "name": "Print accounting / journals"
+    },
+    {
+      "key": "accounting.journals.update",
+      "module": "accounting.journals",
+      "name": "Update accounting / journals"
+    },
+    {
+      "key": "accounting.journals.view",
+      "module": "accounting.journals",
+      "name": "View accounting / journals"
+    },
+    {
+      "key": "accounting.payments.create",
+      "module": "accounting.payments",
+      "name": "Create accounting / payments"
+    },
+    {
+      "key": "accounting.payments.delete",
+      "module": "accounting.payments",
+      "name": "Delete accounting / payments"
+    },
+    {
+      "key": "accounting.payments.export",
+      "module": "accounting.payments",
+      "name": "Export accounting / payments"
+    },
+    {
+      "key": "accounting.payments.print",
+      "module": "accounting.payments",
+      "name": "Print accounting / payments"
+    },
+    {
+      "key": "accounting.payments.update",
+      "module": "accounting.payments",
+      "name": "Update accounting / payments"
+    },
+    {
+      "key": "accounting.payments.view",
+      "module": "accounting.payments",
+      "name": "View accounting / payments"
+    },
+    {
+      "key": "accounting.reports.create",
+      "module": "accounting.reports",
+      "name": "Create accounting / reports"
+    },
+    {
+      "key": "accounting.reports.delete",
+      "module": "accounting.reports",
+      "name": "Delete accounting / reports"
+    },
+    {
+      "key": "accounting.reports.export",
+      "module": "accounting.reports",
+      "name": "Export accounting / reports"
+    },
+    {
+      "key": "accounting.reports.print",
+      "module": "accounting.reports",
+      "name": "Print accounting / reports"
+    },
+    {
+      "key": "accounting.reports.update",
+      "module": "accounting.reports",
+      "name": "Update accounting / reports"
+    },
+    {
+      "key": "accounting.reports.view",
+      "module": "accounting.reports",
+      "name": "View accounting / reports"
+    },
+    {
+      "key": "accounting.service_advances.create",
+      "module": "accounting.service_advances",
+      "name": "Create accounting / service_advances"
+    },
+    {
+      "key": "accounting.service_advances.delete",
+      "module": "accounting.service_advances",
+      "name": "Delete accounting / service_advances"
+    },
+    {
+      "key": "accounting.service_advances.export",
+      "module": "accounting.service_advances",
+      "name": "Export accounting / service_advances"
+    },
+    {
+      "key": "accounting.service_advances.print",
+      "module": "accounting.service_advances",
+      "name": "Print accounting / service_advances"
+    },
+    {
+      "key": "accounting.service_advances.update",
+      "module": "accounting.service_advances",
+      "name": "Update accounting / service_advances"
+    },
+    {
+      "key": "accounting.service_advances.view",
+      "module": "accounting.service_advances",
+      "name": "View accounting / service_advances"
+    },
+    {
+      "key": "attendance.create",
+      "module": "attendance",
+      "name": "Create attendance"
+    },
+    {
+      "key": "attendance.delete",
+      "module": "attendance",
+      "name": "Delete attendance"
+    },
+    {
+      "key": "attendance.devices.create",
+      "module": "attendance.devices",
+      "name": "Create attendance / devices"
+    },
+    {
+      "key": "attendance.devices.delete",
+      "module": "attendance.devices",
+      "name": "Delete attendance / devices"
+    },
+    {
+      "key": "attendance.devices.export",
+      "module": "attendance.devices",
+      "name": "Export attendance / devices"
+    },
+    {
+      "key": "attendance.devices.print",
+      "module": "attendance.devices",
+      "name": "Print attendance / devices"
+    },
+    {
+      "key": "attendance.devices.test",
+      "module": "attendance.devices",
+      "name": "Test attendance / devices"
+    },
+    {
+      "key": "attendance.devices.update",
+      "module": "attendance.devices",
+      "name": "Update attendance / devices"
+    },
+    {
+      "key": "attendance.devices.view",
+      "module": "attendance.devices",
+      "name": "View attendance / devices"
+    },
+    {
+      "key": "attendance.events.create",
+      "module": "attendance.events",
+      "name": "Create attendance / events"
+    },
+    {
+      "key": "attendance.events.delete",
+      "module": "attendance.events",
+      "name": "Delete attendance / events"
+    },
+    {
+      "key": "attendance.events.export",
+      "module": "attendance.events",
+      "name": "Export attendance / events"
+    },
+    {
+      "key": "attendance.events.print",
+      "module": "attendance.events",
+      "name": "Print attendance / events"
+    },
+    {
+      "key": "attendance.events.sync",
+      "module": "attendance.events",
+      "name": "Sync attendance / events"
+    },
+    {
+      "key": "attendance.events.update",
+      "module": "attendance.events",
+      "name": "Update attendance / events"
+    },
+    {
+      "key": "attendance.events.view",
+      "module": "attendance.events",
+      "name": "View attendance / events"
+    },
+    {
+      "key": "attendance.export",
+      "module": "attendance",
+      "name": "Export attendance"
+    },
+    {
+      "key": "attendance.print",
+      "module": "attendance",
+      "name": "Print attendance"
+    },
+    {
+      "key": "attendance.update",
+      "module": "attendance",
+      "name": "Update attendance"
+    },
+    {
+      "key": "attendance.users.create",
+      "module": "attendance.users",
+      "name": "Create attendance / users"
+    },
+    {
+      "key": "attendance.users.delete",
+      "module": "attendance.users",
+      "name": "Delete attendance / users"
+    },
+    {
+      "key": "attendance.users.export",
+      "module": "attendance.users",
+      "name": "Export attendance / users"
+    },
+    {
+      "key": "attendance.users.print",
+      "module": "attendance.users",
+      "name": "Print attendance / users"
+    },
+    {
+      "key": "attendance.users.sync",
+      "module": "attendance.users",
+      "name": "Sync attendance / users"
+    },
+    {
+      "key": "attendance.users.update",
+      "module": "attendance.users",
+      "name": "Update attendance / users"
+    },
+    {
+      "key": "attendance.users.view",
+      "module": "attendance.users",
+      "name": "View attendance / users"
+    },
+    {
+      "key": "attendance.view",
+      "module": "attendance",
+      "name": "View attendance"
+    },
+    {
+      "key": "crm.forms.create",
+      "module": "crm.forms",
+      "name": "Create crm / forms"
+    },
+    {
+      "key": "crm.forms.delete",
+      "module": "crm.forms",
+      "name": "Delete crm / forms"
+    },
+    {
+      "key": "crm.forms.export",
+      "module": "crm.forms",
+      "name": "Export crm / forms"
+    },
+    {
+      "key": "crm.forms.print",
+      "module": "crm.forms",
+      "name": "Print crm / forms"
+    },
+    {
+      "key": "crm.forms.update",
+      "module": "crm.forms",
+      "name": "Update crm / forms"
+    },
+    {
+      "key": "crm.forms.view",
+      "module": "crm.forms",
+      "name": "View crm / forms"
+    },
+    {
+      "key": "crm.leads.create",
+      "module": "crm.leads",
+      "name": "Create crm / leads"
+    },
+    {
+      "key": "crm.leads.delete",
+      "module": "crm.leads",
+      "name": "Delete crm / leads"
+    },
+    {
+      "key": "crm.leads.export",
+      "module": "crm.leads",
+      "name": "Export crm / leads"
+    },
+    {
+      "key": "crm.leads.print",
+      "module": "crm.leads",
+      "name": "Print crm / leads"
+    },
+    {
+      "key": "crm.leads.update",
+      "module": "crm.leads",
+      "name": "Update crm / leads"
+    },
+    {
+      "key": "crm.leads.view",
+      "module": "crm.leads",
+      "name": "View crm / leads"
+    },
+    {
+      "key": "crm.lookups.create",
+      "module": "crm.lookups",
+      "name": "Create crm / lookups"
+    },
+    {
+      "key": "crm.lookups.delete",
+      "module": "crm.lookups",
+      "name": "Delete crm / lookups"
+    },
+    {
+      "key": "crm.lookups.export",
+      "module": "crm.lookups",
+      "name": "Export crm / lookups"
+    },
+    {
+      "key": "crm.lookups.print",
+      "module": "crm.lookups",
+      "name": "Print crm / lookups"
+    },
+    {
+      "key": "crm.lookups.update",
+      "module": "crm.lookups",
+      "name": "Update crm / lookups"
+    },
+    {
+      "key": "crm.lookups.view",
+      "module": "crm.lookups",
+      "name": "View crm / lookups"
+    },
+    {
+      "key": "crm.patients.create",
+      "module": "crm.patients",
+      "name": "Create crm / patients"
+    },
+    {
+      "key": "crm.patients.delete",
+      "module": "crm.patients",
+      "name": "Delete crm / patients"
+    },
+    {
+      "key": "crm.patients.export",
+      "module": "crm.patients",
+      "name": "Export crm / patients"
+    },
+    {
+      "key": "crm.patients.print",
+      "module": "crm.patients",
+      "name": "Print crm / patients"
+    },
+    {
+      "key": "crm.patients.update",
+      "module": "crm.patients",
+      "name": "Update crm / patients"
+    },
+    {
+      "key": "crm.patients.view",
+      "module": "crm.patients",
+      "name": "View crm / patients"
+    },
+    {
+      "key": "crm.payments.create",
+      "module": "crm.payments",
+      "name": "Create crm / payments"
+    },
+    {
+      "key": "crm.payments.delete",
+      "module": "crm.payments",
+      "name": "Delete crm / payments"
+    },
+    {
+      "key": "crm.payments.export",
+      "module": "crm.payments",
+      "name": "Export crm / payments"
+    },
+    {
+      "key": "crm.payments.print",
+      "module": "crm.payments",
+      "name": "Print crm / payments"
+    },
+    {
+      "key": "crm.payments.update",
+      "module": "crm.payments",
+      "name": "Update crm / payments"
+    },
+    {
+      "key": "crm.payments.view",
+      "module": "crm.payments",
+      "name": "View crm / payments"
+    },
+    {
+      "key": "crm.prescriptions.create",
+      "module": "crm.prescriptions",
+      "name": "Create crm / prescriptions"
+    },
+    {
+      "key": "crm.prescriptions.delete",
+      "module": "crm.prescriptions",
+      "name": "Delete crm / prescriptions"
+    },
+    {
+      "key": "crm.prescriptions.export",
+      "module": "crm.prescriptions",
+      "name": "Export crm / prescriptions"
+    },
+    {
+      "key": "crm.prescriptions.print",
+      "module": "crm.prescriptions",
+      "name": "Print crm / prescriptions"
+    },
+    {
+      "key": "crm.prescriptions.update",
+      "module": "crm.prescriptions",
+      "name": "Update crm / prescriptions"
+    },
+    {
+      "key": "crm.prescriptions.view",
+      "module": "crm.prescriptions",
+      "name": "View crm / prescriptions"
+    },
+    {
+      "key": "crm.referrals.create",
+      "module": "crm.referrals",
+      "name": "Create crm / referrals"
+    },
+    {
+      "key": "crm.referrals.delete",
+      "module": "crm.referrals",
+      "name": "Delete crm / referrals"
+    },
+    {
+      "key": "crm.referrals.export",
+      "module": "crm.referrals",
+      "name": "Export crm / referrals"
+    },
+    {
+      "key": "crm.referrals.print",
+      "module": "crm.referrals",
+      "name": "Print crm / referrals"
+    },
+    {
+      "key": "crm.referrals.update",
+      "module": "crm.referrals",
+      "name": "Update crm / referrals"
+    },
+    {
+      "key": "crm.referrals.view",
+      "module": "crm.referrals",
+      "name": "View crm / referrals"
+    },
+    {
+      "key": "crm.surgeries.create",
+      "module": "crm.surgeries",
+      "name": "Create crm / surgeries"
+    },
+    {
+      "key": "crm.surgeries.delete",
+      "module": "crm.surgeries",
+      "name": "Delete crm / surgeries"
+    },
+    {
+      "key": "crm.surgeries.export",
+      "module": "crm.surgeries",
+      "name": "Export crm / surgeries"
+    },
+    {
+      "key": "crm.surgeries.print",
+      "module": "crm.surgeries",
+      "name": "Print crm / surgeries"
+    },
+    {
+      "key": "crm.surgeries.update",
+      "module": "crm.surgeries",
+      "name": "Update crm / surgeries"
+    },
+    {
+      "key": "crm.surgeries.view",
+      "module": "crm.surgeries",
+      "name": "View crm / surgeries"
+    },
+    {
+      "key": "crm.surgery-appointments.create",
+      "module": "crm.surgery-appointments",
+      "name": "Create crm / surgery appointments"
+    },
+    {
+      "key": "crm.surgery-appointments.delete",
+      "module": "crm.surgery-appointments",
+      "name": "Delete crm / surgery appointments"
+    },
+    {
+      "key": "crm.surgery-appointments.export",
+      "module": "crm.surgery-appointments",
+      "name": "Export crm / surgery appointments"
+    },
+    {
+      "key": "crm.surgery-appointments.print",
+      "module": "crm.surgery-appointments",
+      "name": "Print crm / surgery appointments"
+    },
+    {
+      "key": "crm.surgery-appointments.update",
+      "module": "crm.surgery-appointments",
+      "name": "Update crm / surgery appointments"
+    },
+    {
+      "key": "crm.surgery-appointments.view",
+      "module": "crm.surgery-appointments",
+      "name": "View crm / surgery appointments"
+    },
+    {
+      "key": "crm.whatsapp.create",
+      "module": "crm.whatsapp",
+      "name": "Create crm / whatsapp"
+    },
+    {
+      "key": "crm.whatsapp.delete",
+      "module": "crm.whatsapp",
+      "name": "Delete crm / whatsapp"
+    },
+    {
+      "key": "crm.whatsapp.export",
+      "module": "crm.whatsapp",
+      "name": "Export crm / whatsapp"
+    },
+    {
+      "key": "crm.whatsapp.print",
+      "module": "crm.whatsapp",
+      "name": "Print crm / whatsapp"
+    },
+    {
+      "key": "crm.whatsapp.send",
+      "module": "crm.whatsapp",
+      "name": "Send crm / whatsapp"
+    },
+    {
+      "key": "crm.whatsapp.update",
+      "module": "crm.whatsapp",
+      "name": "Update crm / whatsapp"
+    },
+    {
+      "key": "crm.whatsapp.view",
+      "module": "crm.whatsapp",
+      "name": "View crm / whatsapp"
+    },
+    {
+      "key": "dashboard.create",
+      "module": "dashboard",
+      "name": "Create dashboard"
+    },
+    {
+      "key": "dashboard.delete",
+      "module": "dashboard",
+      "name": "Delete dashboard"
+    },
+    {
+      "key": "dashboard.export",
+      "module": "dashboard",
+      "name": "Export dashboard"
+    },
+    {
+      "key": "dashboard.print",
+      "module": "dashboard",
+      "name": "Print dashboard"
+    },
+    {
+      "key": "dashboard.update",
+      "module": "dashboard",
+      "name": "Update dashboard"
+    },
+    {
+      "key": "dashboard.view",
+      "module": "dashboard",
+      "name": "View dashboard"
+    },
+    {
+      "key": "employee-portal.create",
+      "module": "employee-portal",
+      "name": "Create employee portal"
+    },
+    {
+      "key": "employee-portal.delete",
+      "module": "employee-portal",
+      "name": "Delete employee portal"
+    },
+    {
+      "key": "employee-portal.export",
+      "module": "employee-portal",
+      "name": "Export employee portal"
+    },
+    {
+      "key": "employee-portal.print",
+      "module": "employee-portal",
+      "name": "Print employee portal"
+    },
+    {
+      "key": "employee-portal.update",
+      "module": "employee-portal",
+      "name": "Update employee portal"
+    },
+    {
+      "key": "employee-portal.view",
+      "module": "employee-portal",
+      "name": "View employee portal"
+    },
+    {
+      "key": "finance.cash-flow.approve",
+      "module": "finance.cash-flow",
+      "name": "Approve finance / cash flow"
+    },
+    {
+      "key": "finance.cash-flow.create",
+      "module": "finance.cash-flow",
+      "name": "Create finance / cash flow"
+    },
+    {
+      "key": "finance.cash-flow.delete",
+      "module": "finance.cash-flow",
+      "name": "Delete finance / cash flow"
+    },
+    {
+      "key": "finance.cash-flow.export",
+      "module": "finance.cash-flow",
+      "name": "Export finance / cash flow"
+    },
+    {
+      "key": "finance.cash-flow.print",
+      "module": "finance.cash-flow",
+      "name": "Print finance / cash flow"
+    },
+    {
+      "key": "finance.cash-flow.update",
+      "module": "finance.cash-flow",
+      "name": "Update finance / cash flow"
+    },
+    {
+      "key": "finance.cash-flow.view",
+      "module": "finance.cash-flow",
+      "name": "View finance / cash flow"
+    },
+    {
+      "key": "finance.overview.create",
+      "module": "finance.overview",
+      "name": "Create finance / overview"
+    },
+    {
+      "key": "finance.overview.delete",
+      "module": "finance.overview",
+      "name": "Delete finance / overview"
+    },
+    {
+      "key": "finance.overview.export",
+      "module": "finance.overview",
+      "name": "Export finance / overview"
+    },
+    {
+      "key": "finance.overview.print",
+      "module": "finance.overview",
+      "name": "Print finance / overview"
+    },
+    {
+      "key": "finance.overview.update",
+      "module": "finance.overview",
+      "name": "Update finance / overview"
+    },
+    {
+      "key": "finance.overview.view",
+      "module": "finance.overview",
+      "name": "View finance / overview"
+    },
+    {
+      "key": "healthcare.appointments.create",
+      "module": "healthcare.appointments",
+      "name": "Create healthcare / appointments"
+    },
+    {
+      "key": "healthcare.appointments.delete",
+      "module": "healthcare.appointments",
+      "name": "Delete healthcare / appointments"
+    },
+    {
+      "key": "healthcare.appointments.export",
+      "module": "healthcare.appointments",
+      "name": "Export healthcare / appointments"
+    },
+    {
+      "key": "healthcare.appointments.print",
+      "module": "healthcare.appointments",
+      "name": "Print healthcare / appointments"
+    },
+    {
+      "key": "healthcare.appointments.update",
+      "module": "healthcare.appointments",
+      "name": "Update healthcare / appointments"
+    },
+    {
+      "key": "healthcare.appointments.view",
+      "module": "healthcare.appointments",
+      "name": "View healthcare / appointments"
+    },
+    {
+      "key": "healthcare.departments.create",
+      "module": "healthcare.departments",
+      "name": "Create healthcare / departments"
+    },
+    {
+      "key": "healthcare.departments.delete",
+      "module": "healthcare.departments",
+      "name": "Delete healthcare / departments"
+    },
+    {
+      "key": "healthcare.departments.export",
+      "module": "healthcare.departments",
+      "name": "Export healthcare / departments"
+    },
+    {
+      "key": "healthcare.departments.print",
+      "module": "healthcare.departments",
+      "name": "Print healthcare / departments"
+    },
+    {
+      "key": "healthcare.departments.update",
+      "module": "healthcare.departments",
+      "name": "Update healthcare / departments"
+    },
+    {
+      "key": "healthcare.departments.view",
+      "module": "healthcare.departments",
+      "name": "View healthcare / departments"
+    },
+    {
+      "key": "healthcare.feedback.create",
+      "module": "healthcare.feedback",
+      "name": "Create healthcare / feedback"
+    },
+    {
+      "key": "healthcare.feedback.delete",
+      "module": "healthcare.feedback",
+      "name": "Delete healthcare / feedback"
+    },
+    {
+      "key": "healthcare.feedback.export",
+      "module": "healthcare.feedback",
+      "name": "Export healthcare / feedback"
+    },
+    {
+      "key": "healthcare.feedback.print",
+      "module": "healthcare.feedback",
+      "name": "Print healthcare / feedback"
+    },
+    {
+      "key": "healthcare.feedback.update",
+      "module": "healthcare.feedback",
+      "name": "Update healthcare / feedback"
+    },
+    {
+      "key": "healthcare.feedback.view",
+      "module": "healthcare.feedback",
+      "name": "View healthcare / feedback"
+    },
+    {
+      "key": "healthcare.specializations.create",
+      "module": "healthcare.specializations",
+      "name": "Create healthcare / specializations"
+    },
+    {
+      "key": "healthcare.specializations.delete",
+      "module": "healthcare.specializations",
+      "name": "Delete healthcare / specializations"
+    },
+    {
+      "key": "healthcare.specializations.export",
+      "module": "healthcare.specializations",
+      "name": "Export healthcare / specializations"
+    },
+    {
+      "key": "healthcare.specializations.print",
+      "module": "healthcare.specializations",
+      "name": "Print healthcare / specializations"
+    },
+    {
+      "key": "healthcare.specializations.update",
+      "module": "healthcare.specializations",
+      "name": "Update healthcare / specializations"
+    },
+    {
+      "key": "healthcare.specializations.view",
+      "module": "healthcare.specializations",
+      "name": "View healthcare / specializations"
+    },
+    {
+      "key": "healthcare.staff.create",
+      "module": "healthcare.staff",
+      "name": "Create healthcare / staff"
+    },
+    {
+      "key": "healthcare.staff.delete",
+      "module": "healthcare.staff",
+      "name": "Delete healthcare / staff"
+    },
+    {
+      "key": "healthcare.staff.export",
+      "module": "healthcare.staff",
+      "name": "Export healthcare / staff"
+    },
+    {
+      "key": "healthcare.staff.print",
+      "module": "healthcare.staff",
+      "name": "Print healthcare / staff"
+    },
+    {
+      "key": "healthcare.staff.update",
+      "module": "healthcare.staff",
+      "name": "Update healthcare / staff"
+    },
+    {
+      "key": "healthcare.staff.view",
+      "module": "healthcare.staff",
+      "name": "View healthcare / staff"
+    },
+    {
+      "key": "hr.advances.create",
+      "module": "hr.advances",
+      "name": "Create hr / advances"
+    },
+    {
+      "key": "hr.advances.delete",
+      "module": "hr.advances",
+      "name": "Delete hr / advances"
+    },
+    {
+      "key": "hr.advances.export",
+      "module": "hr.advances",
+      "name": "Export hr / advances"
+    },
+    {
+      "key": "hr.advances.print",
+      "module": "hr.advances",
+      "name": "Print hr / advances"
+    },
+    {
+      "key": "hr.advances.update",
+      "module": "hr.advances",
+      "name": "Update hr / advances"
+    },
+    {
+      "key": "hr.advances.view",
+      "module": "hr.advances",
+      "name": "View hr / advances"
+    },
+    {
+      "key": "hr.attendance-permissions.create",
+      "module": "hr.attendance-permissions",
+      "name": "Create hr / attendance permissions"
+    },
+    {
+      "key": "hr.attendance-permissions.delete",
+      "module": "hr.attendance-permissions",
+      "name": "Delete hr / attendance permissions"
+    },
+    {
+      "key": "hr.attendance-permissions.export",
+      "module": "hr.attendance-permissions",
+      "name": "Export hr / attendance permissions"
+    },
+    {
+      "key": "hr.attendance-permissions.print",
+      "module": "hr.attendance-permissions",
+      "name": "Print hr / attendance permissions"
+    },
+    {
+      "key": "hr.attendance-permissions.update",
+      "module": "hr.attendance-permissions",
+      "name": "Update hr / attendance permissions"
+    },
+    {
+      "key": "hr.attendance-permissions.view",
+      "module": "hr.attendance-permissions",
+      "name": "View hr / attendance permissions"
+    },
+    {
+      "key": "hr.attendance.create",
+      "module": "hr.attendance",
+      "name": "Create hr / attendance"
+    },
+    {
+      "key": "hr.attendance.delete",
+      "module": "hr.attendance",
+      "name": "Delete hr / attendance"
+    },
+    {
+      "key": "hr.attendance.export",
+      "module": "hr.attendance",
+      "name": "Export hr / attendance"
+    },
+    {
+      "key": "hr.attendance.print",
+      "module": "hr.attendance",
+      "name": "Print hr / attendance"
+    },
+    {
+      "key": "hr.attendance.update",
+      "module": "hr.attendance",
+      "name": "Update hr / attendance"
+    },
+    {
+      "key": "hr.attendance.view",
+      "module": "hr.attendance",
+      "name": "View hr / attendance"
+    },
+    {
+      "key": "hr.employees.create",
+      "module": "hr.employees",
+      "name": "Create hr / employees"
+    },
+    {
+      "key": "hr.employees.delete",
+      "module": "hr.employees",
+      "name": "Delete hr / employees"
+    },
+    {
+      "key": "hr.employees.export",
+      "module": "hr.employees",
+      "name": "Export hr / employees"
+    },
+    {
+      "key": "hr.employees.print",
+      "module": "hr.employees",
+      "name": "Print hr / employees"
+    },
+    {
+      "key": "hr.employees.update",
+      "module": "hr.employees",
+      "name": "Update hr / employees"
+    },
+    {
+      "key": "hr.employees.view",
+      "module": "hr.employees",
+      "name": "View hr / employees"
+    },
+    {
+      "key": "hr.payroll-adjustments.create",
+      "module": "hr.payroll-adjustments",
+      "name": "Create hr / payroll adjustments"
+    },
+    {
+      "key": "hr.payroll-adjustments.delete",
+      "module": "hr.payroll-adjustments",
+      "name": "Delete hr / payroll adjustments"
+    },
+    {
+      "key": "hr.payroll-adjustments.export",
+      "module": "hr.payroll-adjustments",
+      "name": "Export hr / payroll adjustments"
+    },
+    {
+      "key": "hr.payroll-adjustments.print",
+      "module": "hr.payroll-adjustments",
+      "name": "Print hr / payroll adjustments"
+    },
+    {
+      "key": "hr.payroll-adjustments.update",
+      "module": "hr.payroll-adjustments",
+      "name": "Update hr / payroll adjustments"
+    },
+    {
+      "key": "hr.payroll-adjustments.view",
+      "module": "hr.payroll-adjustments",
+      "name": "View hr / payroll adjustments"
+    },
+    {
+      "key": "hr.payrolls.create",
+      "module": "hr.payrolls",
+      "name": "Create hr / payrolls"
+    },
+    {
+      "key": "hr.payrolls.delete",
+      "module": "hr.payrolls",
+      "name": "Delete hr / payrolls"
+    },
+    {
+      "key": "hr.payrolls.export",
+      "module": "hr.payrolls",
+      "name": "Export hr / payrolls"
+    },
+    {
+      "key": "hr.payrolls.print",
+      "module": "hr.payrolls",
+      "name": "Print payroll list"
+    },
+    {
+      "key": "hr.payrolls.update",
+      "module": "hr.payrolls",
+      "name": "Update hr / payrolls"
+    },
+    {
+      "key": "hr.payrolls.view",
+      "module": "hr.payrolls",
+      "name": "View hr / payrolls"
+    },
+    {
+      "key": "hr.positions.create",
+      "module": "hr.positions",
+      "name": "Create hr / positions"
+    },
+    {
+      "key": "hr.positions.delete",
+      "module": "hr.positions",
+      "name": "Delete hr / positions"
+    },
+    {
+      "key": "hr.positions.export",
+      "module": "hr.positions",
+      "name": "Export hr / positions"
+    },
+    {
+      "key": "hr.positions.print",
+      "module": "hr.positions",
+      "name": "Print hr / positions"
+    },
+    {
+      "key": "hr.positions.update",
+      "module": "hr.positions",
+      "name": "Update hr / positions"
+    },
+    {
+      "key": "hr.positions.view",
+      "module": "hr.positions",
+      "name": "View hr / positions"
+    },
+    {
+      "key": "hr.reports.create",
+      "module": "hr.reports",
+      "name": "Create hr / reports"
+    },
+    {
+      "key": "hr.reports.delete",
+      "module": "hr.reports",
+      "name": "Delete hr / reports"
+    },
+    {
+      "key": "hr.reports.export",
+      "module": "hr.reports",
+      "name": "Export hr / reports"
+    },
+    {
+      "key": "hr.reports.print",
+      "module": "hr.reports",
+      "name": "Print hr / reports"
+    },
+    {
+      "key": "hr.reports.update",
+      "module": "hr.reports",
+      "name": "Update hr / reports"
+    },
+    {
+      "key": "hr.reports.view",
+      "module": "hr.reports",
+      "name": "View hr / reports"
+    },
+    {
+      "key": "hr.salaries.create",
+      "module": "hr.salaries",
+      "name": "Create hr / salaries"
+    },
+    {
+      "key": "hr.salaries.delete",
+      "module": "hr.salaries",
+      "name": "Delete hr / salaries"
+    },
+    {
+      "key": "hr.salaries.export",
+      "module": "hr.salaries",
+      "name": "Export hr / salaries"
+    },
+    {
+      "key": "hr.salaries.print",
+      "module": "hr.salaries",
+      "name": "Print hr / salaries"
+    },
+    {
+      "key": "hr.salaries.update",
+      "module": "hr.salaries",
+      "name": "Update hr / salaries"
+    },
+    {
+      "key": "hr.salaries.view",
+      "module": "hr.salaries",
+      "name": "View hr / salaries"
+    },
+    {
+      "key": "hr.warnings.create",
+      "module": "hr.warnings",
+      "name": "Create hr / warnings"
+    },
+    {
+      "key": "hr.warnings.delete",
+      "module": "hr.warnings",
+      "name": "Delete hr / warnings"
+    },
+    {
+      "key": "hr.warnings.export",
+      "module": "hr.warnings",
+      "name": "Export hr / warnings"
+    },
+    {
+      "key": "hr.warnings.print",
+      "module": "hr.warnings",
+      "name": "Print hr / warnings"
+    },
+    {
+      "key": "hr.warnings.update",
+      "module": "hr.warnings",
+      "name": "Update hr / warnings"
+    },
+    {
+      "key": "hr.warnings.view",
+      "module": "hr.warnings",
+      "name": "View hr / warnings"
+    },
+    {
+      "key": "inventory.barcodes.create",
+      "module": "inventory.barcodes",
+      "name": "Create inventory / barcodes"
+    },
+    {
+      "key": "inventory.barcodes.delete",
+      "module": "inventory.barcodes",
+      "name": "Delete inventory / barcodes"
+    },
+    {
+      "key": "inventory.barcodes.export",
+      "module": "inventory.barcodes",
+      "name": "Export inventory / barcodes"
+    },
+    {
+      "key": "inventory.barcodes.print",
+      "module": "inventory.barcodes",
+      "name": "Print inventory / barcodes"
+    },
+    {
+      "key": "inventory.barcodes.update",
+      "module": "inventory.barcodes",
+      "name": "Update inventory / barcodes"
+    },
+    {
+      "key": "inventory.barcodes.view",
+      "module": "inventory.barcodes",
+      "name": "View inventory / barcodes"
+    },
+    {
+      "key": "inventory.brands.create",
+      "module": "inventory.brands",
+      "name": "Create inventory / brands"
+    },
+    {
+      "key": "inventory.brands.delete",
+      "module": "inventory.brands",
+      "name": "Delete inventory / brands"
+    },
+    {
+      "key": "inventory.brands.export",
+      "module": "inventory.brands",
+      "name": "Export inventory / brands"
+    },
+    {
+      "key": "inventory.brands.print",
+      "module": "inventory.brands",
+      "name": "Print inventory / brands"
+    },
+    {
+      "key": "inventory.brands.update",
+      "module": "inventory.brands",
+      "name": "Update inventory / brands"
+    },
+    {
+      "key": "inventory.brands.view",
+      "module": "inventory.brands",
+      "name": "View inventory / brands"
+    },
+    {
+      "key": "inventory.cardiac-surgery.create",
+      "module": "inventory.cardiac-surgery",
+      "name": "Create inventory / cardiac surgery"
+    },
+    {
+      "key": "inventory.cardiac-surgery.delete",
+      "module": "inventory.cardiac-surgery",
+      "name": "Delete inventory / cardiac surgery"
+    },
+    {
+      "key": "inventory.cardiac-surgery.export",
+      "module": "inventory.cardiac-surgery",
+      "name": "Export inventory / cardiac surgery"
+    },
+    {
+      "key": "inventory.cardiac-surgery.print",
+      "module": "inventory.cardiac-surgery",
+      "name": "Print inventory / cardiac surgery"
+    },
+    {
+      "key": "inventory.cardiac-surgery.update",
+      "module": "inventory.cardiac-surgery",
+      "name": "Update inventory / cardiac surgery"
+    },
+    {
+      "key": "inventory.cardiac-surgery.view",
+      "module": "inventory.cardiac-surgery",
+      "name": "View inventory / cardiac surgery"
+    },
+    {
+      "key": "inventory.cardiac-sw.create",
+      "module": "inventory.cardiac-sw",
+      "name": "Create inventory / cardiac sw"
+    },
+    {
+      "key": "inventory.cardiac-sw.delete",
+      "module": "inventory.cardiac-sw",
+      "name": "Delete inventory / cardiac sw"
+    },
+    {
+      "key": "inventory.cardiac-sw.export",
+      "module": "inventory.cardiac-sw",
+      "name": "Export inventory / cardiac sw"
+    },
+    {
+      "key": "inventory.cardiac-sw.print",
+      "module": "inventory.cardiac-sw",
+      "name": "Print inventory / cardiac sw"
+    },
+    {
+      "key": "inventory.cardiac-sw.update",
+      "module": "inventory.cardiac-sw",
+      "name": "Update inventory / cardiac sw"
+    },
+    {
+      "key": "inventory.cardiac-sw.view",
+      "module": "inventory.cardiac-sw",
+      "name": "View inventory / cardiac sw"
+    },
+    {
+      "key": "inventory.cardiology.create",
+      "module": "inventory.cardiology",
+      "name": "Create inventory / cardiology"
+    },
+    {
+      "key": "inventory.cardiology.delete",
+      "module": "inventory.cardiology",
+      "name": "Delete inventory / cardiology"
+    },
+    {
+      "key": "inventory.cardiology.export",
+      "module": "inventory.cardiology",
+      "name": "Export inventory / cardiology"
+    },
+    {
+      "key": "inventory.cardiology.print",
+      "module": "inventory.cardiology",
+      "name": "Print inventory / cardiology"
+    },
+    {
+      "key": "inventory.cardiology.update",
+      "module": "inventory.cardiology",
+      "name": "Update inventory / cardiology"
+    },
+    {
+      "key": "inventory.cardiology.view",
+      "module": "inventory.cardiology",
+      "name": "View inventory / cardiology"
+    },
+    {
+      "key": "inventory.categories.create",
+      "module": "inventory.categories",
+      "name": "Create inventory / categories"
+    },
+    {
+      "key": "inventory.categories.delete",
+      "module": "inventory.categories",
+      "name": "Delete inventory / categories"
+    },
+    {
+      "key": "inventory.categories.export",
+      "module": "inventory.categories",
+      "name": "Export inventory / categories"
+    },
+    {
+      "key": "inventory.categories.print",
+      "module": "inventory.categories",
+      "name": "Print inventory / categories"
+    },
+    {
+      "key": "inventory.categories.update",
+      "module": "inventory.categories",
+      "name": "Update inventory / categories"
+    },
+    {
+      "key": "inventory.categories.view",
+      "module": "inventory.categories",
+      "name": "View inventory / categories"
+    },
+    {
+      "key": "inventory.customers.create",
+      "module": "inventory.customers",
+      "name": "Create inventory / customers"
+    },
+    {
+      "key": "inventory.customers.delete",
+      "module": "inventory.customers",
+      "name": "Delete inventory / customers"
+    },
+    {
+      "key": "inventory.customers.export",
+      "module": "inventory.customers",
+      "name": "Export inventory / customers"
+    },
+    {
+      "key": "inventory.customers.print",
+      "module": "inventory.customers",
+      "name": "Print inventory / customers"
+    },
+    {
+      "key": "inventory.customers.update",
+      "module": "inventory.customers",
+      "name": "Update inventory / customers"
+    },
+    {
+      "key": "inventory.customers.view",
+      "module": "inventory.customers",
+      "name": "View inventory / customers"
+    },
+    {
+      "key": "inventory.department-orders.comment",
+      "module": "inventory.department-orders",
+      "name": "Comment inventory / department orders"
+    },
+    {
+      "key": "inventory.department-orders.create",
+      "module": "inventory.department-orders",
+      "name": "Create inventory / department orders"
+    },
+    {
+      "key": "inventory.department-orders.delete",
+      "module": "inventory.department-orders",
+      "name": "Delete inventory / department orders"
+    },
+    {
+      "key": "inventory.department-orders.export",
+      "module": "inventory.department-orders",
+      "name": "Export inventory / department orders"
+    },
+    {
+      "key": "inventory.department-orders.print",
+      "module": "inventory.department-orders",
+      "name": "Print inventory / department orders"
+    },
+    {
+      "key": "inventory.department-orders.update",
+      "module": "inventory.department-orders",
+      "name": "Update inventory / department orders"
+    },
+    {
+      "key": "inventory.department-orders.view",
+      "module": "inventory.department-orders",
+      "name": "View inventory / department orders"
+    },
+    {
+      "key": "inventory.department-requests.create",
+      "module": "inventory.department-requests",
+      "name": "Create inventory / department requests"
+    },
+    {
+      "key": "inventory.department-requests.delete",
+      "module": "inventory.department-requests",
+      "name": "Delete inventory / department requests"
+    },
+    {
+      "key": "inventory.department-requests.export",
+      "module": "inventory.department-requests",
+      "name": "Export inventory / department requests"
+    },
+    {
+      "key": "inventory.department-requests.print",
+      "module": "inventory.department-requests",
+      "name": "Print inventory / department requests"
+    },
+    {
+      "key": "inventory.department-requests.update",
+      "module": "inventory.department-requests",
+      "name": "Update inventory / department requests"
+    },
+    {
+      "key": "inventory.department-requests.view",
+      "module": "inventory.department-requests",
+      "name": "View inventory / department requests"
+    },
+    {
+      "key": "inventory.expiry.create",
+      "module": "inventory.expiry",
+      "name": "Create inventory / expiry"
+    },
+    {
+      "key": "inventory.expiry.delete",
+      "module": "inventory.expiry",
+      "name": "Delete inventory / expiry"
+    },
+    {
+      "key": "inventory.expiry.export",
+      "module": "inventory.expiry",
+      "name": "Export inventory / expiry"
+    },
+    {
+      "key": "inventory.expiry.print",
+      "module": "inventory.expiry",
+      "name": "Print inventory / expiry"
+    },
+    {
+      "key": "inventory.expiry.update",
+      "module": "inventory.expiry",
+      "name": "Update inventory / expiry"
+    },
+    {
+      "key": "inventory.expiry.view",
+      "module": "inventory.expiry",
+      "name": "View inventory / expiry"
+    },
+    {
+      "key": "inventory.icu.create",
+      "module": "inventory.icu",
+      "name": "Create inventory / icu"
+    },
+    {
+      "key": "inventory.icu.delete",
+      "module": "inventory.icu",
+      "name": "Delete inventory / icu"
+    },
+    {
+      "key": "inventory.icu.export",
+      "module": "inventory.icu",
+      "name": "Export inventory / icu"
+    },
+    {
+      "key": "inventory.icu.print",
+      "module": "inventory.icu",
+      "name": "Print inventory / icu"
+    },
+    {
+      "key": "inventory.icu.update",
+      "module": "inventory.icu",
+      "name": "Update inventory / icu"
+    },
+    {
+      "key": "inventory.icu.view",
+      "module": "inventory.icu",
+      "name": "View inventory / icu"
+    },
+    {
+      "key": "inventory.item-reductions.create",
+      "module": "inventory.item-reductions",
+      "name": "Create inventory / item reductions"
+    },
+    {
+      "key": "inventory.item-reductions.delete",
+      "module": "inventory.item-reductions",
+      "name": "Delete inventory / item reductions"
+    },
+    {
+      "key": "inventory.item-reductions.export",
+      "module": "inventory.item-reductions",
+      "name": "Export inventory / item reductions"
+    },
+    {
+      "key": "inventory.item-reductions.print",
+      "module": "inventory.item-reductions",
+      "name": "Print inventory / item reductions"
+    },
+    {
+      "key": "inventory.item-reductions.update",
+      "module": "inventory.item-reductions",
+      "name": "Update inventory / item reductions"
+    },
+    {
+      "key": "inventory.item-reductions.view",
+      "module": "inventory.item-reductions",
+      "name": "View inventory / item reductions"
+    },
+    {
+      "key": "inventory.movements.create",
+      "module": "inventory.movements",
+      "name": "Create inventory / movements"
+    },
+    {
+      "key": "inventory.movements.delete",
+      "module": "inventory.movements",
+      "name": "Delete inventory / movements"
+    },
+    {
+      "key": "inventory.movements.export",
+      "module": "inventory.movements",
+      "name": "Export inventory / movements"
+    },
+    {
+      "key": "inventory.movements.print",
+      "module": "inventory.movements",
+      "name": "Print inventory / movements"
+    },
+    {
+      "key": "inventory.movements.update",
+      "module": "inventory.movements",
+      "name": "Update inventory / movements"
+    },
+    {
+      "key": "inventory.movements.view",
+      "module": "inventory.movements",
+      "name": "View inventory / movements"
+    },
+    {
+      "key": "inventory.orders.create",
+      "module": "inventory.orders",
+      "name": "Create inventory / orders"
+    },
+    {
+      "key": "inventory.orders.delete",
+      "module": "inventory.orders",
+      "name": "Delete inventory / orders"
+    },
+    {
+      "key": "inventory.orders.export",
+      "module": "inventory.orders",
+      "name": "Export inventory / orders"
+    },
+    {
+      "key": "inventory.orders.print",
+      "module": "inventory.orders",
+      "name": "Print inventory / orders"
+    },
+    {
+      "key": "inventory.orders.update",
+      "module": "inventory.orders",
+      "name": "Update inventory / orders"
+    },
+    {
+      "key": "inventory.orders.view",
+      "module": "inventory.orders",
+      "name": "View inventory / orders"
+    },
+    {
+      "key": "inventory.patient-products.create",
+      "module": "inventory.patient-products",
+      "name": "Create inventory / patient products"
+    },
+    {
+      "key": "inventory.patient-products.delete",
+      "module": "inventory.patient-products",
+      "name": "Delete inventory / patient products"
+    },
+    {
+      "key": "inventory.patient-products.export",
+      "module": "inventory.patient-products",
+      "name": "Export inventory / patient products"
+    },
+    {
+      "key": "inventory.patient-products.print",
+      "module": "inventory.patient-products",
+      "name": "Print inventory / patient products"
+    },
+    {
+      "key": "inventory.patient-products.update",
+      "module": "inventory.patient-products",
+      "name": "Update inventory / patient products"
+    },
+    {
+      "key": "inventory.patient-products.view",
+      "module": "inventory.patient-products",
+      "name": "View inventory / patient products"
+    },
+    {
+      "key": "inventory.picu.create",
+      "module": "inventory.picu",
+      "name": "Create inventory / picu"
+    },
+    {
+      "key": "inventory.picu.delete",
+      "module": "inventory.picu",
+      "name": "Delete inventory / picu"
+    },
+    {
+      "key": "inventory.picu.export",
+      "module": "inventory.picu",
+      "name": "Export inventory / picu"
+    },
+    {
+      "key": "inventory.picu.print",
+      "module": "inventory.picu",
+      "name": "Print inventory / picu"
+    },
+    {
+      "key": "inventory.picu.update",
+      "module": "inventory.picu",
+      "name": "Update inventory / picu"
+    },
+    {
+      "key": "inventory.picu.view",
+      "module": "inventory.picu",
+      "name": "View inventory / picu"
+    },
+    {
+      "key": "inventory.production-companies.create",
+      "module": "inventory.production-companies",
+      "name": "Create inventory / production companies"
+    },
+    {
+      "key": "inventory.production-companies.delete",
+      "module": "inventory.production-companies",
+      "name": "Delete inventory / production companies"
+    },
+    {
+      "key": "inventory.production-companies.export",
+      "module": "inventory.production-companies",
+      "name": "Export inventory / production companies"
+    },
+    {
+      "key": "inventory.production-companies.print",
+      "module": "inventory.production-companies",
+      "name": "Print inventory / production companies"
+    },
+    {
+      "key": "inventory.production-companies.update",
+      "module": "inventory.production-companies",
+      "name": "Update inventory / production companies"
+    },
+    {
+      "key": "inventory.production-companies.view",
+      "module": "inventory.production-companies",
+      "name": "View inventory / production companies"
+    },
+    {
+      "key": "inventory.products.create",
+      "module": "inventory.products",
+      "name": "Create inventory / products"
+    },
+    {
+      "key": "inventory.products.delete",
+      "module": "inventory.products",
+      "name": "Delete inventory / products"
+    },
+    {
+      "key": "inventory.products.export",
+      "module": "inventory.products",
+      "name": "Export inventory / products"
+    },
+    {
+      "key": "inventory.products.print",
+      "module": "inventory.products",
+      "name": "Print inventory / products"
+    },
+    {
+      "key": "inventory.products.update",
+      "module": "inventory.products",
+      "name": "Update inventory / products"
+    },
+    {
+      "key": "inventory.products.view",
+      "module": "inventory.products",
+      "name": "View inventory / products"
+    },
+    {
+      "key": "inventory.purchase-debts.create",
+      "module": "inventory.purchase-debts",
+      "name": "Create inventory / purchase debts"
+    },
+    {
+      "key": "inventory.purchase-debts.delete",
+      "module": "inventory.purchase-debts",
+      "name": "Delete inventory / purchase debts"
+    },
+    {
+      "key": "inventory.purchase-debts.export",
+      "module": "inventory.purchase-debts",
+      "name": "Export inventory / purchase debts"
+    },
+    {
+      "key": "inventory.purchase-debts.print",
+      "module": "inventory.purchase-debts",
+      "name": "Print inventory / purchase debts"
+    },
+    {
+      "key": "inventory.purchase-debts.update",
+      "module": "inventory.purchase-debts",
+      "name": "Update inventory / purchase debts"
+    },
+    {
+      "key": "inventory.purchase-debts.view",
+      "module": "inventory.purchase-debts",
+      "name": "View inventory / purchase debts"
+    },
+    {
+      "key": "inventory.purchases.create",
+      "module": "inventory.purchases",
+      "name": "Create inventory / purchases"
+    },
+    {
+      "key": "inventory.purchases.delete",
+      "module": "inventory.purchases",
+      "name": "Delete inventory / purchases"
+    },
+    {
+      "key": "inventory.purchases.export",
+      "module": "inventory.purchases",
+      "name": "Export inventory / purchases"
+    },
+    {
+      "key": "inventory.purchases.pay",
+      "module": "inventory.purchases",
+      "name": "Pay inventory / purchases"
+    },
+    {
+      "key": "inventory.purchases.print",
+      "module": "inventory.purchases",
+      "name": "Print inventory / purchases"
+    },
+    {
+      "key": "inventory.purchases.return",
+      "module": "inventory.purchases",
+      "name": "Return inventory / purchases"
+    },
+    {
+      "key": "inventory.purchases.update",
+      "module": "inventory.purchases",
+      "name": "Update inventory / purchases"
+    },
+    {
+      "key": "inventory.purchases.view",
+      "module": "inventory.purchases",
+      "name": "View inventory / purchases"
+    },
+    {
+      "key": "inventory.retailers.create",
+      "module": "inventory.retailers",
+      "name": "Create inventory / retailers"
+    },
+    {
+      "key": "inventory.retailers.delete",
+      "module": "inventory.retailers",
+      "name": "Delete inventory / retailers"
+    },
+    {
+      "key": "inventory.retailers.export",
+      "module": "inventory.retailers",
+      "name": "Export inventory / retailers"
+    },
+    {
+      "key": "inventory.retailers.print",
+      "module": "inventory.retailers",
+      "name": "Print inventory / retailers"
+    },
+    {
+      "key": "inventory.retailers.update",
+      "module": "inventory.retailers",
+      "name": "Update inventory / retailers"
+    },
+    {
+      "key": "inventory.retailers.view",
+      "module": "inventory.retailers",
+      "name": "View inventory / retailers"
+    },
+    {
+      "key": "inventory.special-prices.create",
+      "module": "inventory.special-prices",
+      "name": "Create inventory / special prices"
+    },
+    {
+      "key": "inventory.special-prices.delete",
+      "module": "inventory.special-prices",
+      "name": "Delete inventory / special prices"
+    },
+    {
+      "key": "inventory.special-prices.export",
+      "module": "inventory.special-prices",
+      "name": "Export inventory / special prices"
+    },
+    {
+      "key": "inventory.special-prices.print",
+      "module": "inventory.special-prices",
+      "name": "Print inventory / special prices"
+    },
+    {
+      "key": "inventory.special-prices.update",
+      "module": "inventory.special-prices",
+      "name": "Update inventory / special prices"
+    },
+    {
+      "key": "inventory.special-prices.view",
+      "module": "inventory.special-prices",
+      "name": "View inventory / special prices"
+    },
+    {
+      "key": "inventory.stock.adjust",
+      "module": "inventory.stock",
+      "name": "Adjust inventory / stock"
+    },
+    {
+      "key": "inventory.stock.create",
+      "module": "inventory.stock",
+      "name": "Create inventory / stock"
+    },
+    {
+      "key": "inventory.stock.delete",
+      "module": "inventory.stock",
+      "name": "Delete inventory / stock"
+    },
+    {
+      "key": "inventory.stock.export",
+      "module": "inventory.stock",
+      "name": "Export inventory / stock"
+    },
+    {
+      "key": "inventory.stock.print",
+      "module": "inventory.stock",
+      "name": "Print inventory / stock"
+    },
+    {
+      "key": "inventory.stock.update",
+      "module": "inventory.stock",
+      "name": "Update inventory / stock"
+    },
+    {
+      "key": "inventory.stock.view",
+      "module": "inventory.stock",
+      "name": "View inventory / stock"
+    },
+    {
+      "key": "inventory.surgery-bypass.create",
+      "module": "inventory.surgery-bypass",
+      "name": "Create inventory / surgery bypass"
+    },
+    {
+      "key": "inventory.surgery-bypass.delete",
+      "module": "inventory.surgery-bypass",
+      "name": "Delete inventory / surgery bypass"
+    },
+    {
+      "key": "inventory.surgery-bypass.export",
+      "module": "inventory.surgery-bypass",
+      "name": "Export inventory / surgery bypass"
+    },
+    {
+      "key": "inventory.surgery-bypass.print",
+      "module": "inventory.surgery-bypass",
+      "name": "Print inventory / surgery bypass"
+    },
+    {
+      "key": "inventory.surgery-bypass.update",
+      "module": "inventory.surgery-bypass",
+      "name": "Update inventory / surgery bypass"
+    },
+    {
+      "key": "inventory.surgery-bypass.view",
+      "module": "inventory.surgery-bypass",
+      "name": "View inventory / surgery bypass"
+    },
+    {
+      "key": "inventory.thresholds.create",
+      "module": "inventory.thresholds",
+      "name": "Create inventory / thresholds"
+    },
+    {
+      "key": "inventory.thresholds.delete",
+      "module": "inventory.thresholds",
+      "name": "Delete inventory / thresholds"
+    },
+    {
+      "key": "inventory.thresholds.export",
+      "module": "inventory.thresholds",
+      "name": "Export inventory / thresholds"
+    },
+    {
+      "key": "inventory.thresholds.print",
+      "module": "inventory.thresholds",
+      "name": "Print inventory / thresholds"
+    },
+    {
+      "key": "inventory.thresholds.update",
+      "module": "inventory.thresholds",
+      "name": "Update inventory / thresholds"
+    },
+    {
+      "key": "inventory.thresholds.view",
+      "module": "inventory.thresholds",
+      "name": "View inventory / thresholds"
+    },
+    {
+      "key": "inventory.top-products.create",
+      "module": "inventory.top-products",
+      "name": "Create inventory / top products"
+    },
+    {
+      "key": "inventory.top-products.delete",
+      "module": "inventory.top-products",
+      "name": "Delete inventory / top products"
+    },
+    {
+      "key": "inventory.top-products.export",
+      "module": "inventory.top-products",
+      "name": "Export inventory / top products"
+    },
+    {
+      "key": "inventory.top-products.print",
+      "module": "inventory.top-products",
+      "name": "Print inventory / top products"
+    },
+    {
+      "key": "inventory.top-products.update",
+      "module": "inventory.top-products",
+      "name": "Update inventory / top products"
+    },
+    {
+      "key": "inventory.top-products.view",
+      "module": "inventory.top-products",
+      "name": "View inventory / top products"
+    },
+    {
+      "key": "inventory.transfers.create",
+      "module": "inventory.transfers",
+      "name": "Create inventory / transfers"
+    },
+    {
+      "key": "inventory.transfers.delete",
+      "module": "inventory.transfers",
+      "name": "Delete inventory / transfers"
+    },
+    {
+      "key": "inventory.transfers.export",
+      "module": "inventory.transfers",
+      "name": "Export inventory / transfers"
+    },
+    {
+      "key": "inventory.transfers.print",
+      "module": "inventory.transfers",
+      "name": "Print inventory / transfers"
+    },
+    {
+      "key": "inventory.transfers.update",
+      "module": "inventory.transfers",
+      "name": "Update inventory / transfers"
+    },
+    {
+      "key": "inventory.transfers.view",
+      "module": "inventory.transfers",
+      "name": "View inventory / transfers"
+    },
+    {
+      "key": "inventory.warehouses.create",
+      "module": "inventory.warehouses",
+      "name": "Create inventory / warehouses"
+    },
+    {
+      "key": "inventory.warehouses.delete",
+      "module": "inventory.warehouses",
+      "name": "Delete inventory / warehouses"
+    },
+    {
+      "key": "inventory.warehouses.export",
+      "module": "inventory.warehouses",
+      "name": "Export inventory / warehouses"
+    },
+    {
+      "key": "inventory.warehouses.print",
+      "module": "inventory.warehouses",
+      "name": "Print inventory / warehouses"
+    },
+    {
+      "key": "inventory.warehouses.update",
+      "module": "inventory.warehouses",
+      "name": "Update inventory / warehouses"
+    },
+    {
+      "key": "inventory.warehouses.view",
+      "module": "inventory.warehouses",
+      "name": "View inventory / warehouses"
+    },
+    {
+      "key": "meetings.chat",
+      "module": "meetings",
+      "name": "Chat meetings"
+    },
+    {
+      "key": "meetings.create",
+      "module": "meetings",
+      "name": "Create meetings"
+    },
+    {
+      "key": "meetings.delete",
+      "module": "meetings",
+      "name": "Delete meetings"
+    },
+    {
+      "key": "meetings.end",
+      "module": "meetings",
+      "name": "End meetings"
+    },
+    {
+      "key": "meetings.export",
+      "module": "meetings",
+      "name": "Export meetings"
+    },
+    {
+      "key": "meetings.join",
+      "module": "meetings",
+      "name": "Join meetings"
+    },
+    {
+      "key": "meetings.print",
+      "module": "meetings",
+      "name": "Print meetings"
+    },
+    {
+      "key": "meetings.update",
+      "module": "meetings",
+      "name": "Update meetings"
+    },
+    {
+      "key": "meetings.view",
+      "module": "meetings",
+      "name": "View meetings"
+    },
+    {
+      "key": "notifications.create",
+      "module": "notifications",
+      "name": "Create notifications"
+    },
+    {
+      "key": "notifications.delete",
+      "module": "notifications",
+      "name": "Delete notifications"
+    },
+    {
+      "key": "notifications.export",
+      "module": "notifications",
+      "name": "Export notifications"
+    },
+    {
+      "key": "notifications.print",
+      "module": "notifications",
+      "name": "Print notifications"
+    },
+    {
+      "key": "notifications.update",
+      "module": "notifications",
+      "name": "Update notifications"
+    },
+    {
+      "key": "notifications.view",
+      "module": "notifications",
+      "name": "View notifications"
+    },
+    {
+      "key": "permissions.create",
+      "module": "permissions",
+      "name": "Create permissions"
+    },
+    {
+      "key": "permissions.delete",
+      "module": "permissions",
+      "name": "Delete permissions"
+    },
+    {
+      "key": "permissions.export",
+      "module": "permissions",
+      "name": "Export permissions"
+    },
+    {
+      "key": "permissions.print",
+      "module": "permissions",
+      "name": "Print permissions"
+    },
+    {
+      "key": "permissions.update",
+      "module": "permissions",
+      "name": "Update permissions"
+    },
+    {
+      "key": "permissions.view",
+      "module": "permissions",
+      "name": "View permissions"
+    },
+    {
+      "key": "pos.checkout.create",
+      "module": "pos.checkout",
+      "name": "Create pos / checkout"
+    },
+    {
+      "key": "pos.checkout.delete",
+      "module": "pos.checkout",
+      "name": "Delete pos / checkout"
+    },
+    {
+      "key": "pos.checkout.export",
+      "module": "pos.checkout",
+      "name": "Export pos / checkout"
+    },
+    {
+      "key": "pos.checkout.print",
+      "module": "pos.checkout",
+      "name": "Print pos / checkout"
+    },
+    {
+      "key": "pos.checkout.update",
+      "module": "pos.checkout",
+      "name": "Update pos / checkout"
+    },
+    {
+      "key": "pos.checkout.view",
+      "module": "pos.checkout",
+      "name": "View pos / checkout"
+    },
+    {
+      "key": "pos.sales.cancel",
+      "module": "pos.sales",
+      "name": "Cancel pos / sales"
+    },
+    {
+      "key": "pos.sales.create",
+      "module": "pos.sales",
+      "name": "Create pos / sales"
+    },
+    {
+      "key": "pos.sales.delete",
+      "module": "pos.sales",
+      "name": "Delete pos / sales"
+    },
+    {
+      "key": "pos.sales.export",
+      "module": "pos.sales",
+      "name": "Export pos / sales"
+    },
+    {
+      "key": "pos.sales.print",
+      "module": "pos.sales",
+      "name": "Print pos / sales"
+    },
+    {
+      "key": "pos.sales.return",
+      "module": "pos.sales",
+      "name": "Return pos / sales"
+    },
+    {
+      "key": "pos.sales.update",
+      "module": "pos.sales",
+      "name": "Update pos / sales"
+    },
+    {
+      "key": "pos.sales.view",
+      "module": "pos.sales",
+      "name": "View pos / sales"
+    },
+    {
+      "key": "profile.create",
+      "module": "profile",
+      "name": "Create profile"
+    },
+    {
+      "key": "profile.delete",
+      "module": "profile",
+      "name": "Delete profile"
+    },
+    {
+      "key": "profile.export",
+      "module": "profile",
+      "name": "Export profile"
+    },
+    {
+      "key": "profile.print",
+      "module": "profile",
+      "name": "Print profile"
+    },
+    {
+      "key": "profile.update",
+      "module": "profile",
+      "name": "Update profile"
+    },
+    {
+      "key": "profile.view",
+      "module": "profile",
+      "name": "View profile"
+    },
+    {
+      "key": "roles.assign_permissions",
+      "module": "roles",
+      "name": "Assign permissions roles"
+    },
+    {
+      "key": "roles.create",
+      "module": "roles",
+      "name": "Create roles"
+    },
+    {
+      "key": "roles.delete",
+      "module": "roles",
+      "name": "Delete roles"
+    },
+    {
+      "key": "roles.export",
+      "module": "roles",
+      "name": "Export roles"
+    },
+    {
+      "key": "roles.print",
+      "module": "roles",
+      "name": "Print roles"
+    },
+    {
+      "key": "roles.update",
+      "module": "roles",
+      "name": "Update roles"
+    },
+    {
+      "key": "roles.view",
+      "module": "roles",
+      "name": "View roles"
+    },
+    {
+      "key": "settings.backups.create",
+      "module": "settings.backups",
+      "name": "Create settings / backups"
+    },
+    {
+      "key": "settings.backups.delete",
+      "module": "settings.backups",
+      "name": "Delete settings / backups"
+    },
+    {
+      "key": "settings.backups.export",
+      "module": "settings.backups",
+      "name": "Export settings / backups"
+    },
+    {
+      "key": "settings.backups.print",
+      "module": "settings.backups",
+      "name": "Print settings / backups"
+    },
+    {
+      "key": "settings.backups.update",
+      "module": "settings.backups",
+      "name": "Update settings / backups"
+    },
+    {
+      "key": "settings.backups.view",
+      "module": "settings.backups",
+      "name": "View settings / backups"
+    },
+    {
+      "key": "settings.create",
+      "module": "settings",
+      "name": "Create settings"
+    },
+    {
+      "key": "settings.delete",
+      "module": "settings",
+      "name": "Delete settings"
+    },
+    {
+      "key": "settings.export",
+      "module": "settings",
+      "name": "Export settings"
+    },
+    {
+      "key": "settings.print",
+      "module": "settings",
+      "name": "Print settings"
+    },
+    {
+      "key": "settings.update",
+      "module": "settings",
+      "name": "Update settings"
+    },
+    {
+      "key": "settings.view",
+      "module": "settings",
+      "name": "View settings"
+    },
+    {
+      "key": "system.logs.create",
+      "module": "system.logs",
+      "name": "Create system / logs"
+    },
+    {
+      "key": "system.logs.delete",
+      "module": "system.logs",
+      "name": "Delete system / logs"
+    },
+    {
+      "key": "system.logs.export",
+      "module": "system.logs",
+      "name": "Export system / logs"
+    },
+    {
+      "key": "system.logs.print",
+      "module": "system.logs",
+      "name": "Print system / logs"
+    },
+    {
+      "key": "system.logs.update",
+      "module": "system.logs",
+      "name": "Update system / logs"
+    },
+    {
+      "key": "system.logs.view",
+      "module": "system.logs",
+      "name": "View system / logs"
+    },
+    {
+      "key": "targets.create",
+      "module": "targets",
+      "name": "Create targets"
+    },
+    {
+      "key": "targets.delete",
+      "module": "targets",
+      "name": "Delete targets"
+    },
+    {
+      "key": "targets.export",
+      "module": "targets",
+      "name": "Export targets"
+    },
+    {
+      "key": "targets.manage_all",
+      "module": "targets",
+      "name": "Manage all targets"
+    },
+    {
+      "key": "targets.print",
+      "module": "targets",
+      "name": "Print targets"
+    },
+    {
+      "key": "targets.reward",
+      "module": "targets",
+      "name": "Grant target rewards"
+    },
+    {
+      "key": "targets.update",
+      "module": "targets",
+      "name": "Update targets"
+    },
+    {
+      "key": "targets.view",
+      "module": "targets",
+      "name": "View targets"
+    },
+    {
+      "key": "tasks.list.approve",
+      "module": "tasks.list",
+      "name": "Approve task completion"
+    },
+    {
+      "key": "tasks.list.attach",
+      "module": "tasks.list",
+      "name": "Attach tasks / list"
+    },
+    {
+      "key": "tasks.list.comment",
+      "module": "tasks.list",
+      "name": "Comment tasks / list"
+    },
+    {
+      "key": "tasks.list.create",
+      "module": "tasks.list",
+      "name": "Create tasks / list"
+    },
+    {
+      "key": "tasks.list.delete",
+      "module": "tasks.list",
+      "name": "Delete tasks / list"
+    },
+    {
+      "key": "tasks.list.export",
+      "module": "tasks.list",
+      "name": "Export tasks / list"
+    },
+    {
+      "key": "tasks.list.manage_all",
+      "module": "tasks.list",
+      "name": "Manage all tasks / list"
+    },
+    {
+      "key": "tasks.list.print",
+      "module": "tasks.list",
+      "name": "Print tasks / list"
+    },
+    {
+      "key": "tasks.list.record_time",
+      "module": "tasks.list",
+      "name": "Record time tasks / list"
+    },
+    {
+      "key": "tasks.list.update",
+      "module": "tasks.list",
+      "name": "Update tasks / list"
+    },
+    {
+      "key": "tasks.list.view",
+      "module": "tasks.list",
+      "name": "View tasks / list"
+    },
+    {
+      "key": "tasks.reports.create",
+      "module": "tasks.reports",
+      "name": "Create tasks / reports"
+    },
+    {
+      "key": "tasks.reports.delete",
+      "module": "tasks.reports",
+      "name": "Delete tasks / reports"
+    },
+    {
+      "key": "tasks.reports.export",
+      "module": "tasks.reports",
+      "name": "Export tasks / reports"
+    },
+    {
+      "key": "tasks.reports.print",
+      "module": "tasks.reports",
+      "name": "Print tasks / reports"
+    },
+    {
+      "key": "tasks.reports.update",
+      "module": "tasks.reports",
+      "name": "Update tasks / reports"
+    },
+    {
+      "key": "tasks.reports.view",
+      "module": "tasks.reports",
+      "name": "View tasks / reports"
+    },
+    {
+      "key": "users.assign_roles",
+      "module": "users",
+      "name": "Assign user roles"
+    },
+    {
+      "key": "users.create",
+      "module": "users",
+      "name": "Create users"
+    },
+    {
+      "key": "users.delete",
+      "module": "users",
+      "name": "Delete users"
+    },
+    {
+      "key": "users.export",
+      "module": "users",
+      "name": "Export users"
+    },
+    {
+      "key": "users.password",
+      "module": "users",
+      "name": "Password users"
+    },
+    {
+      "key": "users.print",
+      "module": "users",
+      "name": "Print users"
+    },
+    {
+      "key": "users.update",
+      "module": "users",
+      "name": "Update users"
+    },
+    {
+      "key": "users.view",
+      "module": "users",
+      "name": "View users"
+    },
+    {
+        "key": "laboratory.orders.view",
+        "module": "laboratory.orders",
+        "name": "View laboratory / orders"
+      },
+      {
+        "key": "laboratory.orders.create",
+        "module": "laboratory.orders",
+        "name": "Create laboratory / orders"
+      },
+      {
+        "key": "laboratory.orders.update",
+        "module": "laboratory.orders",
+        "name": "Update laboratory / orders"
+      },
+      {
+        "key": "laboratory.orders.print",
+        "module": "laboratory.orders",
+        "name": "Print laboratory / orders"
+      },
+      {
+        "key": "laboratory.tests.view",
+        "module": "laboratory.tests",
+        "name": "View laboratory / tests"
+      },
+      {
+        "key": "laboratory.tests.create",
+        "module": "laboratory.tests",
+        "name": "Create laboratory / tests"
+      },
+      {
+        "key": "laboratory.tests.delete",
+        "module": "laboratory.tests",
+        "name": "Delete laboratory / tests"
+      },
+      {
+        "key": "laboratory.tests.update",
+        "module": "laboratory.tests",
+        "name": "Update laboratory / tests"
+      },
+      {
+        "key": "laboratory.payments.view",
+        "module": "laboratory.payments",
+        "name": "View laboratory / payments"
+      },
+      {
+        "key": "laboratory.payments.create",
+        "module": "laboratory.payments",
+        "name": "Create laboratory / payments"
+      }
+  ],
+  "availableActions": {
+"building-expenses": ["view","create","update","approve"],
+    "laboratory.display": ["view", "call"],
+    "laboratory.pages.tests": ["view"],
+    "laboratory.pages.accounting": ["view"],
+    "laboratory.pages.completed": ["view"],
+    "laboratory.pages.received": ["view"],
+    "laboratory.pages.display": ["view"],
+    "laboratory.pages.tickets": ["view"],
+    "laboratory.pages.room": ["view"],
+    "laboratory.pages.queue": ["view"],
+    "laboratory.pages.reception": ["view"],
+    "laboratory.pages.dashboard": ["view"],
+    "crm.patients": ["create", "delete", "export", "print", "update", "view"],
+    "inventory.special-prices": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "crm.referrals": ["create", "delete", "export", "print", "update", "view"],
+    "inventory.cardiac-surgery": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "crm.leads": ["create", "delete", "export", "print", "update", "view"],
+    "inventory.warehouses": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "inventory.production-companies": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "permissions": ["view"],
+    "crm.prescriptions": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "hr.positions": ["create", "delete", "export", "print", "update", "view"],
+    "dashboard": ["export", "print", "view"],
+    "hr.employees": ["create", "delete", "export", "print", "update", "view"],
+    "inventory.barcodes": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "crm.forms": ["create", "delete", "export", "print", "update", "view"],
+    "crm.surgery-appointments": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "healthcare.departments": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "inventory.brands": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "inventory.orders": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "roles": ["assign_permissions", "create", "delete", "update", "view"],
+    "inventory.top-products": ["export", "print", "view"],
+    "accounting.journals": [
+      "create",
+      "delete",
+      "export",
+      "post",
+      "print",
+      "update",
+      "view"
+    ],
+    "crm.whatsapp": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "send",
+      "update",
+      "view"
+    ],
+    "hr.payrolls": ["create", "delete", "export", "print", "update", "view"],
+    "inventory.purchases": [
+      "create",
+      "delete",
+      "export",
+      "pay",
+      "print",
+      "return",
+      "update",
+      "view"
+    ],
+    "accounting.reports": ["export", "print", "view"],
+    "inventory.patient-products": ["export", "print", "view"],
+    "targets": [
+      "create",
+      "delete",
+      "export",
+      "manage_all",
+      "print",
+      "reward",
+      "update",
+      "view"
+    ],
+    "healthcare.staff": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "hr.attendance-permissions": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "hr.reports": ["export", "print", "view"],
+    "pos.sales": [
+      "cancel",
+      "create",
+      "delete",
+      "export",
+      "print",
+      "return",
+      "update",
+      "view"
+    ],
+    "accounting.invoices": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "tasks.list": [
+      "approve",
+      "attach",
+      "comment",
+      "create",
+      "delete",
+      "export",
+      "manage_all",
+      "print",
+      "record_time",
+      "update",
+      "view"
+    ],
+    "attendance.devices": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "test",
+      "update",
+      "view"
+    ],
+    "inventory.department-requests": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "hr.payroll-adjustments": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "crm.payments": ["create", "delete", "export", "print", "update", "view"],
+    "employee-portal": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "inventory.movements": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "accounting.accounts": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "inventory.picu": ["create", "delete", "export", "print", "update", "view"],
+    "hr.advances": ["create", "delete", "export", "print", "update", "view"],
+    "inventory.icu": ["create", "delete", "export", "print", "update", "view"],
+    "inventory.stock": [
+      "adjust",
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "inventory.department-orders": [
+      "comment",
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "inventory.retailers": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "crm.surgeries": ["create", "delete", "export", "print", "update", "view"],
+    "settings.backups": ["view", "create"],
+    "attendance.events": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "sync",
+      "update",
+      "view"
+    ],
+    "inventory.transfers": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "finance.overview": ["export", "print", "view"],
+    "inventory.surgery-bypass": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "inventory.purchase-debts": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "hr.warnings": ["create", "delete", "export", "print", "update", "view"],
+    "finance.cash-flow": [
+      "approve",
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "meetings": [
+      "chat",
+      "create",
+      "delete",
+      "end",
+      "export",
+      "join",
+      "print",
+      "update",
+      "view"
+    ],
+    "inventory.products": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "accounting.payments": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "healthcare.feedback": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "hr.salaries": ["create", "delete", "export", "print", "update", "view"],
+    "inventory.expiry": ["export", "print", "view"],
+    "healthcare.specializations": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "healthcare.appointments": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "inventory.cardiac-sw": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "notifications": ["create", "delete", "export", "print", "update", "view"],
+    "inventory.cardiology": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "inventory.thresholds": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "inventory.item-reductions": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "crm.lookups": ["export", "print", "view"],
+    "attendance.users": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "sync",
+      "update",
+      "view"
+    ],
+    "tasks.reports": ["export", "print", "view"],
+    "attendance": ["create", "delete", "export", "print", "update", "view"],
+    "settings": ["view", "update"],
+    "hr.attendance": ["create", "delete", "export", "print", "update", "view"],
+    "system.logs": ["export", "print", "view"],
+    "profile": ["view", "update"],
+    "inventory.categories": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "inventory.customers": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "pos.checkout": ["create", "delete", "export", "print", "update", "view"],
+    "users": [
+      "assign_roles",
+      "create",
+      "delete",
+      "export",
+      "password",
+      "print",
+      "update",
+      "view"
+    ],
+    "accounting.service_advances": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "accounting.customers": [
+      "create",
+      "delete",
+      "export",
+      "print",
+      "update",
+      "view"
+    ],
+    "laboratory.orders": [
+        "view",
+        "create",
+        "update",
+        "print"
+      ],
+      "laboratory.tests": [
+        "view",
+        "create",
+        "update",
+        "delete"
+      ],
+      "laboratory.payments": [
+        "view",
+        "create"
+      ]
+  },
+  "pages": {
+    "/icu": "inventory.icu",
+"/building-expenses": "building-expenses",
+    "/dashboard": "dashboard",
+    "/profile": "profile",
+    "/employee-portal": "employee-portal",
+    "/users": "users",
+    "/roles": "roles",
+    "/system-logs": "system.logs",
+    "/settings": "settings",
+    "/tasks/reports": "tasks.reports",
+    "/tasks/review": "tasks.list",
+    "/tasks/dashboard": "tasks.list",
+    "/tasks": "tasks.list",
+    "/meetings": "meetings",
+    "/targets": "targets",
+    "/feedback": "healthcare.feedback",
+    "/hr": "hr.employees",
+    "/employees": "hr.employees",
+    "/positions": "hr.positions",
+    "/salaries": "hr.salaries",
+    "/hr-attendance": "hr.attendance",
+    "/payrolls": "hr.payrolls",
+    "/hr/reports": "hr.reports",
+    "/hr/warnings": "hr.warnings",
+    "/salary-advances": "hr.advances",
+    "/departments": "healthcare.departments",
+    "/health-staff": "healthcare.staff",
+    "/appointments": "healthcare.appointments",
+    "/crm/today-patients": "healthcare.appointments",
+    "/crm/appointments": "healthcare.appointments",
+    "/crm": "crm.lookups",
+    "/crm/patients/:id/medications": "crm.prescriptions",
+    "/accounting": "finance.overview",
+    "/accounting/overview": "finance.overview",
+    "/accounting/income-expenses": "finance.cash-flow",
+    "/accounting/service-advances": "accounting.service_advances",
+    "/attendance/users": "attendance.users",
+    "/attendance/devices": "attendance.devices",
+    "/attendance/events": "attendance.events",
+    "/attendance": "attendance",
+    "/pos/checkout": "pos.checkout",
+    "/pos/sales": "pos.sales",
+    "/warehouses": "inventory.stock",
+    "/warehouses/buy/product": "inventory.purchases",
+    "/warehouses/buy/debts": "inventory.purchase-debts",
+    "/warehouses/buy/order": "inventory.orders",
+    "/warehouses/buy/department-orders": "inventory.department-orders",
+    "/warehouses/product/special": "inventory.products",
+    "/warehouses/product/transfer": "inventory.transfers",
+    "/warehouses/storage/special-price": "inventory.special-prices",
+    "/warehouses/storage/expire-soon": "inventory.expiry",
+    "/warehouses/storage/threshold": "inventory.thresholds",
+    "/warehouses/utilities/item-reduction": "inventory.item-reductions",
+    "/warehouses/utilities/all-item-reductions": "inventory.item-reductions",
+    "/warehouses/reports/products-per-patient": "inventory.patient-products",
+    "/warehouses/reports/top-products": "inventory.top-products",
+    "/accounting/accounts": "accounting.accounts",
+    "/accounting/customers": "accounting.customers",
+    "/accounting/invoices": "accounting.invoices",
+    "/accounting/journals": "accounting.journals",
+    "/accounting/payments": "accounting.payments",
+    "/accounting/reports": "accounting.reports",
+    "/accounting/service_advances": "accounting.service_advances",
+    "/crm/forms": "crm.forms",
+    "/crm/leads": "crm.leads",
+    "/crm/lookups": "crm.lookups",
+    "/crm/follow-up": "crm.patients",
+    "/crm/patients": "crm.patients",
+    "/crm/payments": "crm.payments",
+    "/crm/prescriptions": "crm.prescriptions",
+    "/crm/referrals": "crm.referrals",
+    "/crm/surgeries": "crm.surgeries",
+    "/crm/surgery-appointments": "crm.surgery-appointments",
+    "/crm/whatsapp": "crm.whatsapp",
+    "/inventory/barcodes": "inventory.barcodes",
+    "/inventory/brands": "inventory.brands",
+    "/inventory/cardiac-surgery": "inventory.cardiac-surgery",
+    "/inventory/cardiac-sw": "inventory.cardiac-sw",
+    "/inventory/cardiology": "inventory.cardiology",
+    "/inventory/categories": "inventory.categories",
+    "/inventory/customers": "inventory.customers",
+    "/inventory/department-orders": "inventory.department-orders",
+    "/inventory/department-requests": "inventory.department-requests",
+    "/inventory/expiry": "inventory.expiry",
+    "/inventory/icu": "inventory.icu",
+    "/inventory/item-reductions": "inventory.item-reductions",
+    "/inventory/movements": "inventory.movements",
+    "/inventory/orders": "inventory.orders",
+    "/inventory/patient-products": "inventory.patient-products",
+    "/inventory/picu": "inventory.picu",
+    "/inventory/production-companies": "inventory.production-companies",
+    "/inventory/products": "inventory.products",
+    "/inventory/purchase-debts": "inventory.purchase-debts",
+    "/inventory/purchases": "inventory.purchases",
+    "/inventory/retailers": "inventory.retailers",
+    "/inventory/special-prices": "inventory.special-prices",
+    "/inventory/stock": "inventory.stock",
+    "/inventory/surgery-bypass": "inventory.surgery-bypass",
+    "/inventory/thresholds": "inventory.thresholds",
+    "/inventory/top-products": "inventory.top-products",
+    "/inventory/transfers": "inventory.transfers",
+    "/inventory/warehouses": "inventory.warehouses",
+    "/warehouses/retailers": "inventory.retailers",
+    "/warehouses/production-companies": "inventory.production-companies",
+    "/warehouses/customers": "inventory.customers",
+    "/warehouses/cases/icu": "inventory.icu",
+    "/warehouses/cases/picu": "inventory.picu",
+    "/warehouses/cases/cardiac-sw": "inventory.cardiac-sw",
+    "/warehouses/cases/cardiac-surgery": "inventory.cardiac-surgery",
+    "/warehouses/cases/cardiology": "inventory.cardiology",
+    "/warehouses/cases/surgery-bypass": "inventory.surgery-bypass",
+    "/laboratory": "laboratory.pages.dashboard",
+      "/laboratory/reception": "laboratory.pages.reception",
+      "/laboratory/queue": "laboratory.pages.queue",
+      "/laboratory/room": "laboratory.pages.room",
+      "/laboratory/tickets": "laboratory.pages.tickets",
+      "/laboratory/display": "laboratory.pages.display",
+      "/laboratory/received": "laboratory.pages.received",
+      "/laboratory/completed": "laboratory.pages.completed",
+      "/laboratory/accounting": "laboratory.pages.accounting",
+      "/laboratory/tests": "laboratory.pages.tests"
+  },
+  "resources": [
+    { "pattern": "^/icu(?:/|$)", "resource": "inventory.icu" },
+{"pattern":"^/building-expenses(?:/|$)","resource":"building-expenses"},
+    {
+        "pattern": "^/laboratory/orders(?:/[^/]+)?$",
+        "resource": "laboratory.orders"
+      },
+      {
+        "pattern": "^/laboratory/tests(?:/[^/]+)?$",
+        "resource": "laboratory.tests"
+      },
+    {
+      "pattern": "^/employees/records/attendance-permissions(?:/|$)",
+      "resource": "hr.attendance-permissions"
+    },
+    {
+      "pattern": "^/inventory/reports/products-per-patient(?:/|$)",
+      "resource": "inventory.patient-products"
+    },
+    {
+      "pattern": "^/employees/records/payroll-adjustments(?:/|$)",
+      "resource": "hr.payroll-adjustments"
+    },
+    {
+      "pattern": "^/inventory/patient-products-report(?:/|$)",
+      "resource": "inventory.patient-products"
+    },
+    {
+      "pattern": "^/inventory/cardiac-surgery-cases(?:/|$)",
+      "resource": "inventory.cardiac-surgery"
+    },
+    {
+      "pattern": "^/inventory/production-companies(?:/|$)",
+      "resource": "inventory.production-companies"
+    },
+    {
+      "pattern": "^/inventory/department-requests(?:/|$)",
+      "resource": "inventory.department-requests"
+    },
+    {
+      "pattern": "^/employees/records/attendance(?:/|$)",
+      "resource": "hr.attendance"
+    },
+    {
+      "pattern": "^/inventory/department-orders(?:/|$)",
+      "resource": "inventory.department-orders"
+    },
+    {
+      "pattern": "^/healthcare/specializations(?:/|$)",
+      "resource": "healthcare.specializations"
+    },
+    {
+      "pattern": "^/inventory/patient-products(?:/|$)",
+      "resource": "inventory.patient-products"
+    },
+    {
+      "pattern": "^/employees/records/salaries(?:/|$)",
+      "resource": "hr.salaries"
+    },
+    {
+      "pattern": "^/employees/records/payrolls(?:/|$)",
+      "resource": "hr.payrolls"
+    },
+    {
+      "pattern": "^/inventory/cardiac-sw-cases(?:/|$)",
+      "resource": "inventory.cardiac-sw"
+    },
+    {
+      "pattern": "^/inventory/cardiology-cases(?:/|$)",
+      "resource": "inventory.cardiology"
+    },
+    {
+      "pattern": "^/inventory/cardiac-surgery(?:/|$)",
+      "resource": "inventory.cardiac-surgery"
+    },
+    {
+      "pattern": "^/inventory/item-reductions(?:/|$)",
+      "resource": "inventory.item-reductions"
+    },
+    {
+      "pattern": "^/inventory/item-reductions(?:/|$)",
+      "resource": "inventory.item-reductions"
+    },
+    {
+      "pattern": "^/crm/surgery-appointments(?:/|$)",
+      "resource": "crm.surgery-appointments"
+    },
+    {
+      "pattern": "^/inventory/purchase-debts(?:/|$)",
+      "resource": "inventory.purchase-debts"
+    },
+    {
+      "pattern": "^/inventory/special-prices(?:/|$)",
+      "resource": "inventory.special-prices"
+    },
+    {
+      "pattern": "^/inventory/surgery-bypass(?:/|$)",
+      "resource": "inventory.surgery-bypass"
+    },
+    {
+      "pattern": "^/inventory/surgery-bypass(?:/|$)",
+      "resource": "inventory.surgery-bypass"
+    },
+    {
+      "pattern": "^/healthcare/appointments(?:/|$)",
+      "resource": "healthcare.appointments"
+    },
+    {
+      "pattern": "^/healthcare/departments(?:/|$)",
+      "resource": "healthcare.departments"
+    },
+    {
+      "pattern": "^/inventory/top-products(?:/|$)",
+      "resource": "inventory.top-products"
+    },
+    {
+      "pattern": "^/inventory/cardiac-sw(?:/|$)",
+      "resource": "inventory.cardiac-sw"
+    },
+    {
+      "pattern": "^/inventory/cardiology(?:/|$)",
+      "resource": "inventory.cardiology"
+    },
+    {
+      "pattern": "^/inventory/categories(?:/|$)",
+      "resource": "inventory.categories"
+    },
+    {
+      "pattern": "^/inventory/thresholds(?:/|$)",
+      "resource": "inventory.thresholds"
+    },
+    {
+      "pattern": "^/inventory/warehouses(?:/|$)",
+      "resource": "inventory.warehouses"
+    },
+    {
+      "pattern": "^/inventory/picu-cases(?:/|$)",
+      "resource": "inventory.picu"
+    },
+    {
+      "pattern": "^/healthcare/feedback(?:/|$)",
+      "resource": "healthcare.feedback"
+    },
+    {
+      "pattern": "^/inventory/customers(?:/|$)",
+      "resource": "inventory.customers"
+    },
+    {
+      "pattern": "^/inventory/movements(?:/|$)",
+      "resource": "inventory.movements"
+    },
+    {
+      "pattern": "^/inventory/purchases(?:/|$)",
+      "resource": "inventory.purchases"
+    },
+    {
+      "pattern": "^/inventory/retailers(?:/|$)",
+      "resource": "inventory.retailers"
+    },
+    {
+      "pattern": "^/inventory/transfers(?:/|$)",
+      "resource": "inventory.transfers"
+    },
+    {
+      "pattern": "^/accounting/accounts(?:/|$)",
+      "resource": "accounting.accounts"
+    },
+    {
+      "pattern": "^/accounting/journals(?:/|$)",
+      "resource": "accounting.journals"
+    },
+    {
+      "pattern": "^/employees/positions(?:/|$)",
+      "resource": "hr.positions"
+    },
+    {
+      "pattern": "^/inventory/icu-cases(?:/|$)",
+      "resource": "inventory.icu"
+    },
+    {
+      "pattern": "^/inventory/barcodes(?:/|$)",
+      "resource": "inventory.barcodes"
+    },
+    {
+      "pattern": "^/inventory/products(?:/|$)",
+      "resource": "inventory.products"
+    },
+    {
+      "pattern": "^/accounting/reports(?:/|$)",
+      "resource": "accounting.reports"
+    },
+    {
+      "pattern": "^/attendance/devices(?:/|$)",
+      "resource": "attendance.devices"
+    },
+    {
+      "pattern": "^/employees/warnings(?:/|$)",
+      "resource": "hr.warnings"
+    },
+    {
+      "pattern": "^/crm/prescriptions(?:/|$)",
+      "resource": "crm.prescriptions"
+    },
+    {
+      "pattern": "^/finance/cash-flow(?:/|$)",
+      "resource": "finance.cash-flow"
+    },
+    {
+      "pattern": "^/billing/customers(?:/|$)",
+      "resource": "accounting.customers"
+    },
+    {
+      "pattern": "^/advances/services(?:/|$)",
+      "resource": "accounting.service_advances"
+    },
+    {
+      "pattern": "^/attendance/people(?:/|$)",
+      "resource": "attendance.users"
+    },
+    {
+      "pattern": "^/attendance/events(?:/|$)",
+      "resource": "attendance.events"
+    },
+    {
+      "pattern": "^/inventory/storage(?:/|$)",
+      "resource": "inventory.stock"
+    },
+    {
+      "pattern": "^/healthcare/staff(?:/|$)",
+      "resource": "healthcare.staff"
+    },
+    {
+      "pattern": "^/inventory/brands(?:/|$)",
+      "resource": "inventory.brands"
+    },
+    {
+      "pattern": "^/inventory/expiry(?:/|$)",
+      "resource": "inventory.expiry"
+    },
+    {
+      "pattern": "^/inventory/orders(?:/|$)",
+      "resource": "inventory.orders"
+    },
+    {
+      "pattern": "^/settings/backups(?:/|$)",
+      "resource": "settings.backups"
+    },
+    {
+      "pattern": "^/billing/invoices(?:/|$)",
+      "resource": "accounting.invoices"
+    },
+    {
+      "pattern": "^/billing/payments(?:/|$)",
+      "resource": "accounting.payments"
+    },
+    {
+      "pattern": "^/inventory/adjust(?:/|$)",
+      "resource": "inventory.stock"
+    },
+    {
+      "pattern": "^/crm/appointments(?:/|$)",
+      "resource": "healthcare.appointments"
+    },
+    {
+      "pattern": "^/advances/service(?:/|$)",
+      "resource": "accounting.service_advances"
+    },
+    {
+      "pattern": "^/inventory/stock(?:/|$)",
+      "resource": "inventory.stock"
+    },
+    {
+      "pattern": "^/employee-portal(?:/|$)",
+      "resource": "employee-portal"
+    },
+    {
+      "pattern": "^/inventory/picu(?:/|$)",
+      "resource": "inventory.picu"
+    },
+    {
+      "pattern": "^/crm/referrals(?:/|$)",
+      "resource": "crm.referrals"
+    },
+    {
+      "pattern": "^/crm/surgeries(?:/|$)",
+      "resource": "crm.surgeries"
+    },
+    {
+      "pattern": "^/inventory/icu(?:/|$)",
+      "resource": "inventory.icu"
+    },
+    {
+      "pattern": "^/notifications(?:/|$)",
+      "resource": "notifications"
+    },
+    {
+      "pattern": "^/tasks/reports(?:/|$)",
+      "resource": "tasks.reports"
+    },
+    {
+      "pattern": "^/crm/patients(?:/|$)",
+      "resource": "crm.patients"
+    },
+    {
+      "pattern": "^/crm/payments(?:/|$)",
+      "resource": "crm.payments"
+    },
+    {
+      "pattern": "^/crm/whatsapp(?:/|$)",
+      "resource": "crm.whatsapp"
+    },
+    {
+      "pattern": "^/auth/profile(?:/|$)",
+      "resource": "profile"
+    },
+    {
+      "pattern": "^/crm/lookups(?:/|$)",
+      "resource": "crm.lookups"
+    },
+    {
+      "pattern": "^/permissions(?:/|$)",
+      "resource": "permissions"
+    },
+    {
+      "pattern": "^/system-logs(?:/|$)",
+      "resource": "system.logs"
+    },
+    {
+      "pattern": "^/crm/forms(?:/|$)",
+      "resource": "crm.forms"
+    },
+    {
+      "pattern": "^/crm/leads(?:/|$)",
+      "resource": "crm.leads"
+    },
+    {
+      "pattern": "^/employees(?:/|$)",
+      "resource": "hr.employees"
+    },
+    {
+      "pattern": "^/pos/sales(?:/|$)",
+      "resource": "pos.sales"
+    },
+    {
+      "pattern": "^/settings(?:/|$)",
+      "resource": "settings"
+    },
+    {
+      "pattern": "^/meetings(?:/|$)",
+      "resource": "meetings"
+    },
+    {
+      "pattern": "^/feedback(?:/|$)",
+      "resource": "healthcare.feedback"
+    },
+    {
+      "pattern": "^/advances(?:/|$)",
+      "resource": "hr.advances"
+    },
+    {
+      "pattern": "^/targets(?:/|$)",
+      "resource": "targets"
+    },
+    {
+      "pattern": "^/users(?:/|$)",
+      "resource": "users"
+    },
+    {
+      "pattern": "^/roles(?:/|$)",
+      "resource": "roles"
+    },
+    {
+      "pattern": "^/tasks(?:/|$)",
+      "resource": "tasks.list"
+    }
+  ],
+  "overrides": [
+{"method":"PATCH","pattern":"^/building-expenses/requests/[^/]+/status$","permission":"building-expenses.approve"},
+    { "method": "GET", "pattern": "^/laboratory/orders/[^/]+/queue-position$", "permission": "laboratory.orders.view" },
+    { "method": "POST", "pattern": "^/laboratory/orders/[^/]+/request-patient$", "permission": "laboratory.orders.update" },
+    { "method": "GET", "pattern": "^/laboratory/accounting-queue$", "permission": "laboratory.orders.view" },
+    { "method": "POST", "pattern": "^/laboratory/orders/[^/]+/call-ticket$", "permission": "laboratory.display.call" },
+    {
+      "method": "GET",
+      "pattern": "^/laboratory/dashboard$",
+      "permission": "laboratory.orders.view"
+    },
+    {
+      "method": "GET",
+      "pattern": "^/laboratory/overview$",
+      "permission": "laboratory.orders.view"
+    },
+    {
+      "method": "POST",
+      "pattern": "^/laboratory/orders/[^/]+/attachments$",
+      "permission": "laboratory.orders.update"
+    },
+    {
+      "method": "GET",
+      "pattern": "^/laboratory/orders/[^/]+/attachments/[^/]+$",
+      "permission": "laboratory.orders.view"
+    },
+    {
+        "method": "PATCH",
+        "pattern": "^/laboratory/orders/[^/]+/(stage|results)$",
+        "permission": "laboratory.orders.update"
+      },
+      {
+        "method": "POST",
+        "pattern": "^/laboratory/orders/[^/]+/pay$",
+        "permission": "laboratory.payments.create"
+      },
+      {
+        "method": "GET",
+        "pattern": "^/laboratory/lookups/[^/]+$",
+        "permission": "laboratory.orders.create"
+      },
+      {
+        "method": "GET",
+        "pattern": "^/laboratory/config$",
+        "permission": "laboratory.orders.view"
+      },
+    {
+      "method": "POST",
+      "pattern": "^/pos/sales$",
+      "permission": "pos.checkout.create"
+    },
+    {
+      "method": "POST",
+      "pattern": "^/pos/sales/return$",
+      "permission": "pos.sales.return"
+    },
+    {
+      "method": "POST",
+      "pattern": "^/pos/sales/[^/]+/cancel$",
+      "permission": "pos.sales.cancel"
+    },
+    {
+      "method": "PUT",
+      "pattern": "^/roles/[^/]+/permissions$",
+      "permission": "roles.assign_permissions"
+    },
+    {
+      "method": "POST",
+      "pattern": "^/users/[^/]+/roles$",
+      "permission": "users.assign_roles"
+    },
+    {
+      "method": "GET",
+      "pattern": "^/crm/prescriptions/catalog$",
+      "permission": "inventory.products.view"
+    },
+    {
+      "method": "GET",
+      "pattern": "^/inventory/icu-cases/patients$",
+      "permission": "crm.patients.view"
+    },
+    {
+      "method": "GET",
+      "pattern": "^/crm/lookups$",
+      "permission": "crm.lookups.view"
+    },
+    {
+      "method": "GET",
+      "pattern": "^/crm/appointments/today$",
+      "permission": "healthcare.appointments.view"
+    },
+    {
+      "method": "POST",
+      "pattern": "^/attendance/people/sync$",
+      "permission": "attendance.users.sync"
+    },
+    {
+      "method": "POST",
+      "pattern": "^/attendance/events/sync$",
+      "permission": "attendance.events.sync"
+    },
+    {
+      "method": "POST",
+      "pattern": "^/attendance/devices/[^/]+/test$",
+      "permission": "attendance.devices.test"
+    },
+    {
+      "method": "GET",
+      "pattern": "^/tasks/reports/monthly$",
+      "permission": "tasks.reports.view"
+    },
+    {
+      "method": "POST",
+      "pattern": "^/tasks/[^/]+/comments$",
+      "permission": "tasks.list.comment"
+    },
+    {
+      "method": "POST",
+      "pattern": "^/tasks/[^/]+/attachments$",
+      "permission": "tasks.list.attach"
+    },
+    {
+      "method": "POST",
+      "pattern": "^/tasks/uploads$",
+      "permission": "tasks.list.attach"
+    },
+    {
+      "method": "POST",
+      "pattern": "^/tasks/[^/]+/time-entries$",
+      "permission": "tasks.list.record_time"
+    },
+    {
+      "method": "POST",
+      "pattern": "^/inventory/purchases/[^/]+/pay$",
+      "permission": "inventory.purchase-debts.create"
+    },
+    {
+      "method": "PATCH",
+      "pattern": "^/inventory/products/[^/]+/special-price$",
+      "permission": "inventory.special-prices.update"
+    },
+    {
+      "method": "POST",
+      "pattern": "^/accounting/journals/[^/]+/post$",
+      "permission": "accounting.journals.post"
+    },
+    {
+      "method": "POST",
+      "pattern": "^/finance/cash-flow/[^/]+/approve$",
+      "permission": "finance.cash-flow.approve"
+    },
+    {
+      "method": "GET",
+      "pattern": "^/finance/cash-flow/overview$",
+      "permission": "finance.overview.view"
+    },
+    {
+      "method": "POST",
+      "pattern": "^/users/[^/]+/password$",
+      "permission": "users.password"
+    },
+    {
+      "method": "GET",
+      "pattern": "^/inventory/products/barcode/new$",
+      "permission": "inventory.barcodes.create"
+    },
+    {
+      "method": "PATCH",
+      "pattern": "^/inventory/products/[^/]+/barcode$",
+      "permission": "inventory.barcodes.update"
+    }
+  ],
+  "readDependencies": {
+    "inventory.products.view": ["inventory.categories.view"],
+    "laboratory.display.call": ["laboratory.display.view", "laboratory.orders.view"],
+    "laboratory.pages.tests.view": ["laboratory.tests.view"],
+    "laboratory.pages.accounting.view": ["laboratory.payments.view"],
+    "laboratory.pages.completed.view": ["laboratory.orders.view"],
+    "laboratory.pages.received.view": ["laboratory.orders.view"],
+    "laboratory.pages.display.view": ["laboratory.orders.view"],
+    "laboratory.pages.tickets.view": ["laboratory.orders.view"],
+    "laboratory.pages.room.view": ["laboratory.orders.view"],
+    "laboratory.pages.queue.view": ["laboratory.orders.view"],
+    "laboratory.pages.reception.view": ["laboratory.orders.view"],
+    "laboratory.pages.dashboard.view": ["laboratory.orders.view"],
+    "crm.patients.create": ["crm.lookups.view", "healthcare.appointments.view"],
+    "crm.patients.delete": ["crm.lookups.view", "healthcare.appointments.view"],
+    "crm.patients.export": ["crm.lookups.view", "healthcare.appointments.view"],
+    "crm.patients.print": ["crm.lookups.view", "healthcare.appointments.view"],
+    "crm.patients.update": ["crm.lookups.view", "healthcare.appointments.view"],
+    "crm.patients.view": ["crm.lookups.view", "healthcare.appointments.view"],
+    "crm.surgery-appointments.create": [
+      "crm.lookups.view",
+      "crm.patients.view",
+      "crm.surgeries.view",
+      "healthcare.staff.view"
+    ],
+    "crm.surgery-appointments.delete": [
+      "crm.lookups.view",
+      "crm.patients.view",
+      "crm.surgeries.view",
+      "healthcare.staff.view"
+    ],
+    "crm.surgery-appointments.export": [
+      "crm.lookups.view",
+      "crm.patients.view",
+      "crm.surgeries.view",
+      "healthcare.staff.view"
+    ],
+    "crm.surgery-appointments.print": [
+      "crm.lookups.view",
+      "crm.patients.view",
+      "crm.surgeries.view",
+      "healthcare.staff.view"
+    ],
+    "crm.surgery-appointments.update": [
+      "crm.lookups.view",
+      "crm.patients.view",
+      "crm.surgeries.view",
+      "healthcare.staff.view"
+    ],
+    "crm.surgery-appointments.view": [
+      "crm.lookups.view",
+      "crm.patients.view",
+      "crm.surgeries.view",
+      "healthcare.staff.view"
+    ],
+    "crm.payments.create": ["crm.lookups.view", "crm.patients.view"],
+    "crm.payments.delete": ["crm.lookups.view", "crm.patients.view"],
+    "crm.payments.export": ["crm.lookups.view", "crm.patients.view"],
+    "crm.payments.print": ["crm.lookups.view", "crm.patients.view"],
+    "crm.payments.update": ["crm.lookups.view", "crm.patients.view"],
+    "crm.payments.view": ["crm.lookups.view", "crm.patients.view"],
+    "crm.surgeries.create": ["crm.lookups.view"],
+    "crm.surgeries.delete": ["crm.lookups.view"],
+    "crm.surgeries.export": ["crm.lookups.view"],
+    "crm.surgeries.print": ["crm.lookups.view"],
+    "crm.surgeries.update": ["crm.lookups.view"],
+    "crm.surgeries.view": ["crm.lookups.view"],
+    "crm.leads.create": ["crm.lookups.view"],
+    "crm.leads.delete": ["crm.lookups.view"],
+    "crm.leads.export": ["crm.lookups.view"],
+    "crm.leads.print": ["crm.lookups.view"],
+    "crm.leads.update": ["crm.lookups.view"],
+    "crm.leads.view": ["crm.lookups.view"],
+    "crm.referrals.create": ["crm.lookups.view"],
+    "crm.referrals.delete": ["crm.lookups.view"],
+    "crm.referrals.export": ["crm.lookups.view"],
+    "crm.referrals.print": ["crm.lookups.view"],
+    "crm.referrals.update": ["crm.lookups.view"],
+    "crm.referrals.view": ["crm.lookups.view"],
+    "roles.assign_permissions": ["permissions.view"],
+    "roles.create": ["permissions.view"],
+    "roles.delete": ["permissions.view"],
+    "roles.update": ["permissions.view"],
+    "roles.view": ["permissions.view"],
+    "laboratory.payments.view": [
+        "laboratory.orders.view"
+      ],
+      "laboratory.payments.create": [
+        "laboratory.orders.view"
+      ],
+      "laboratory.orders.create": [
+        "laboratory.orders.view",
+        "laboratory.tests.view"
+      ]
+  }
+}

@@ -1,0 +1,1758 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  warehouseId String?
+  warehouse InventoryWarehouse? @relation(fields: [warehouseId], references: [id], onDelete: SetNull)
+  @@index([warehouseId])
+  prescriptions PatientPrescription[]
+  patientFormSubmissions PatientFormSubmission[]
+  id                String               @id @default(cuid())
+  username          String               @unique(map: "User_username_key")
+  email             String               @unique(map: "User_email_key")
+  name              String
+  passwordHash      String
+  pinHash           String?
+  pinLookup         String?              @unique(map: "User_pinLookup_key")
+  department        String?
+  status            String               @default("active")
+  roles             UserRole[]
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
+  employee          Employee?
+  createdTasks      Task[]               @relation("TaskCreator")
+  createdProjects   Project[]            @relation("ProjectCreator")
+  reviewedTasks     Task[]               @relation("TaskReviewer")
+  taskComments      TaskComment[]
+  recordedTaskTime  TaskTimeEntry[]
+  notifications     Notification[]
+  submittedIdeas    EmployeeIdea[]
+  sentWarnings      Warning[]            @relation("WarningSender")
+  warningRecipients WarningRecipient[]
+  createdMeetings   Meeting[]            @relation("MeetingCreator")
+  meetingAttendance MeetingParticipant[]
+  createdTargets    EmployeeTarget[]     @relation("TargetCreator")
+
+  @@map("access_User")
+}
+
+model AttendanceDevice {
+  id                  String             @id @default(cuid())
+  name                String
+  model               String             @default("DS-K1T342MFWX-E1")
+  ipAddress           String
+  port                Int                @default(80)
+  username            String
+  password            String
+  serialNumber        String?
+  status              String             @default("offline")
+  lastSeenAt          DateTime?
+  eventsClearedAt     DateTime?
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+  people              AttendancePerson[]
+  events              AttendanceEvent[]
+
+  @@unique([ipAddress, port], map: "AttendanceDevice_ipAddress_port_key")
+  @@map("attendance_AttendanceDevice")
+}
+
+model AttendancePerson {
+  id             String            @id @default(cuid())
+  deviceId       String
+  employeeId     String?
+  employeeNo     String
+  name           String
+  cardNo         String?
+  hasFingerprint Boolean           @default(false)
+  hasFace        Boolean           @default(false)
+  hasPassword    Boolean           @default(false)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  device         AttendanceDevice  @relation(fields: [deviceId], references: [id], onDelete: Cascade, map: "AttendancePerson_deviceId_fkey")
+  employee       Employee?         @relation(fields: [employeeId], references: [id], onDelete: SetNull, map: "AttendancePerson_employeeId_fkey")
+  events         AttendanceEvent[]
+
+  @@unique([deviceId, employeeNo], map: "AttendancePerson_deviceId_employeeNo_key")
+  @@index([employeeId], map: "AttendancePerson_employeeId_idx")
+  @@map("attendance_AttendancePerson")
+}
+
+model AttendanceEvent {
+  id            String            @id @default(cuid())
+  deviceId      String
+  personId      String?
+  employeeNo    String
+  personName    String?
+  eventType     String
+  occurredAt    DateTime
+  verification  String?
+  deviceEventId String?
+  createdAt     DateTime          @default(now())
+  device        AttendanceDevice  @relation(fields: [deviceId], references: [id], onDelete: Cascade, map: "AttendanceEvent_deviceId_fkey")
+  person        AttendancePerson? @relation(fields: [personId], references: [id], onDelete: SetNull, map: "AttendanceEvent_personId_fkey")
+
+  @@unique([deviceId, deviceEventId], map: "AttendanceEvent_deviceId_deviceEventId_key")
+  @@index([occurredAt], map: "AttendanceEvent_occurredAt_idx")
+  @@index([employeeNo], map: "AttendanceEvent_employeeNo_idx")
+  @@map("attendance_AttendanceEvent")
+}
+
+model Role {
+  code        String?          @unique(map: "Role_code_key")
+  id          String           @id @default(cuid())
+  name        String           @unique(map: "Role_name_key")
+  description String?
+  users       UserRole[]
+  permissions RolePermission[]
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  @@map("access_Role")
+}
+
+model Permission {
+  id          String           @id @default(cuid())
+  key         String           @unique(map: "Permission_key_key")
+  name        String
+  module      String
+  description String?
+  roles       RolePermission[]
+  createdAt   DateTime         @default(now())
+
+  @@map("access_Permission")
+}
+
+model UserRole {
+  userId String
+  roleId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, map: "UserRole_userId_fkey")
+  role   Role   @relation(fields: [roleId], references: [id], onDelete: Cascade, map: "UserRole_roleId_fkey")
+
+  @@id([userId, roleId])
+  @@map("access_UserRole")
+}
+
+model RolePermission {
+  roleId       String
+  permissionId String
+  role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade, map: "role_permission_roleId_fkey")
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade, map: "role_permission_permissionId_fkey")
+
+  @@id([roleId, permissionId])
+  @@map("access_RolePermission")
+}
+
+model Position {
+  id          String     @id @default(cuid())
+  name        String     @unique(map: "Position_name_key")
+  description String?
+  status      String     @default("active")
+  employees   Employee[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@map("hr_Position")
+}
+
+model Team {
+  id String @id @default(cuid())
+  name String @unique(map: "Team_name_key")
+  description String?
+  status String @default("active")
+  leaderId String?
+  leader Employee? @relation("TeamLeader", fields: [leaderId], references: [id], onDelete: SetNull)
+  employees Employee[] @relation("TeamEmployees")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([leaderId])
+  @@map("hr_Team")
+}
+
+model Employee {
+  id                    String                 @id @default(cuid())
+  employeeCode          String                 @unique(map: "Employee_employeeCode_key")
+  userId                String?                @unique(map: "Employee_userId_key")
+  firstName             String
+  lastName              String
+  departmentId          String?
+  positionId            String?
+  hireDate              DateTime
+  checkInTime           String                 @default("09:00")
+  checkOutTime          String                 @default("17:00")
+  scheduleType          String                 @default("static")
+  workSchedule          Json?
+  status                String                 @default("active")
+  position              Position?              @relation(fields: [positionId], references: [id], onDelete: SetNull, map: "Employee_positionId_fkey")
+  department            Department?            @relation("DepartmentEmployees", fields: [departmentId], references: [id], onDelete: SetNull, map: "Employee_departmentId_fkey")
+  managedDepartments    Department[]           @relation("DepartmentManager")
+  // Legacy columns are retained for migration/rollback; leadership comes from Team.leaderId.
+  isTeamLeader          Boolean                @default(false) @ignore
+  teamLeaderId          String? @ignore
+  teamLeader            Employee?              @relation("TeamLeaderMembers", fields: [teamLeaderId], references: [id], onDelete: SetNull, map: "Employee_teamLeaderId_fkey") @ignore
+  teamMembers           Employee[]             @relation("TeamLeaderMembers") @ignore
+  teamId String?
+  team Team? @relation("TeamEmployees", fields: [teamId], references: [id], onDelete: SetNull)
+  ledTeams Team[] @relation("TeamLeader")
+  healthStaff           HealthStaff?
+  user                  User?                  @relation(fields: [userId], references: [id], onDelete: SetNull, map: "Employee_userId_fkey")
+  devicePeople          AttendancePerson[]
+  salaries              EmployeeSalary[]
+  attendance            EmployeeAttendance[]
+  attendancePermissions AttendancePermission[]
+  payrolls              Payroll[]
+  payrollAdjustments    PayrollAdjustment[]
+  salaryAdvances        SalaryAdvance[]
+  taskAssignments       TaskAssignee[]
+  taskTimeEntries       TaskTimeEntry[]
+  targets               EmployeeTarget[]
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+
+  @@index([departmentId], map: "Employee_departmentId_idx")
+  @@index([positionId], map: "Employee_positionId_idx")
+  @@index([teamLeaderId], map: "Employee_teamLeaderId_idx")
+  @@map("hr_Employees")
+}
+
+model EmployeeTarget {
+  id           String   @id @default(cuid())
+  title        String
+  description  String?  @db.Text
+  metric       String
+  unit         String
+  targetValue  Float
+  currentValue Float    @default(0)
+  startDate    DateTime
+  dueDate      DateTime
+  status       String   @default("active")
+  employeeId   String
+  createdById  String
+  employee     Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade, map: "EmployeeTarget_employeeId_fkey")
+  createdBy    User     @relation("TargetCreator", fields: [createdById], references: [id], onDelete: Restrict, map: "EmployeeTarget_createdById_fkey")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([employeeId, status], map: "EmployeeTarget_employeeId_status_idx")
+  @@index([createdById], map: "EmployeeTarget_createdById_idx")
+  @@index([dueDate], map: "EmployeeTarget_dueDate_idx")
+  @@map("hr_EmployeeTarget")
+}
+
+model Task {
+  id               String           @id @default(cuid())
+  title            String
+  description      String           @db.Text
+  team             String?
+  projectId        String?
+  project          Project?         @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  priority         String           @default("medium")
+  status           String           @default("todo")
+  startDate        DateTime?
+  dueDate          DateTime?
+  estimatedMinutes Int?
+  completedAt      DateTime?
+  reviewedAt       DateTime?
+  reviewedById     String?
+  reviewNote       String?          @db.Text
+  createdById      String
+  createdBy        User             @relation("TaskCreator", fields: [createdById], references: [id], onDelete: Restrict, map: "Task_createdById_fkey")
+  reviewedBy       User?            @relation("TaskReviewer", fields: [reviewedById], references: [id], onDelete: SetNull, map: "Task_reviewedById_fkey")
+  assignees        TaskAssignee[]
+  attachments      TaskAttachment[]
+  comments         TaskComment[]
+  timeEntries      TaskTimeEntry[]
+  notifications    Notification[]
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  @@index([status], map: "Task_status_idx")
+  @@index([team], map: "Task_team_idx")
+  @@index([projectId], map: "Task_projectId_idx")
+  @@index([dueDate], map: "Task_dueDate_idx")
+  @@map("tasks_Task")
+}
+
+model Project {
+  id           String     @id @default(cuid())
+  name         String
+  description  String?    @db.Text
+  status       String     @default("active")
+  departmentId String?
+  createdById  String
+  department   Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  createdBy    User       @relation("ProjectCreator", fields: [createdById], references: [id], onDelete: Restrict)
+  tasks        Task[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  @@index([departmentId, status])
+  @@map("tasks_Project")
+}
+
+model Notification {
+  reminderKey String?   @unique
+  title       String?
+  body        String?   @db.Text
+  route       String?
+  id          String    @id @default(cuid())
+  userId      String
+  taskId      String?
+  warningId   String?
+  meetingId   String?
+  crmLeadId   String?
+  type        String
+  readAt      DateTime?
+  createdAt   DateTime  @default(now())
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade, map: "Notification_userId_fkey")
+  task        Task?     @relation(fields: [taskId], references: [id], onDelete: Cascade, map: "Notification_taskId_fkey")
+  warning     Warning?  @relation(fields: [warningId], references: [id], onDelete: Cascade, map: "Notification_warningId_fkey")
+  meeting     Meeting?  @relation(fields: [meetingId], references: [id], onDelete: Cascade, map: "Notification_meetingId_fkey")
+  crmLead     CrmLead?  @relation(fields: [crmLeadId], references: [id], onDelete: Cascade, map: "Notification_crmLeadId_fkey")
+
+  @@index([userId, readAt, createdAt], map: "Notification_userId_readAt_createdAt_idx")
+  @@index([taskId], map: "Notification_taskId_idx")
+  @@index([warningId], map: "Notification_warningId_idx")
+  @@index([meetingId], map: "Notification_meetingId_idx")
+  @@index([crmLeadId], map: "Notification_crmLeadId_idx")
+  @@map("system_Notification")
+}
+
+model EmployeeIdea {
+  id          String   @id @default(cuid())
+  userId      String
+  title       String
+  description String   @db.Text
+  status      String   @default("submitted")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "EmployeeIdea_userId_fkey")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId, createdAt], map: "EmployeeIdea_userId_createdAt_idx")
+  @@map("hr_EmployeeIdea")
+}
+
+model Warning {
+  id            String             @id @default(cuid())
+  senderId      String
+  title         String
+  message       String             @db.Text
+  severity      String             @default("warning")
+  sender        User               @relation("WarningSender", fields: [senderId], references: [id], onDelete: Restrict, map: "Warning_senderId_fkey")
+  recipients    WarningRecipient[]
+  notifications Notification[]
+  createdAt     DateTime           @default(now())
+
+  @@index([createdAt], map: "Warning_createdAt_idx")
+  @@map("hr_Warning")
+}
+
+model WarningRecipient {
+  warningId String
+  userId    String
+  readAt    DateTime?
+  warning   Warning   @relation(fields: [warningId], references: [id], onDelete: Cascade, map: "WarningRecipient_warningId_fkey")
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade, map: "WarningRecipient_userId_fkey")
+
+  @@id([warningId, userId])
+  @@index([userId, readAt], map: "WarningRecipient_userId_readAt_idx")
+  @@map("hr_WarningRecipient")
+}
+
+model TaskTimeEntry {
+  id           String   @id @default(cuid())
+  taskId       String
+  employeeId   String
+  recordedById String
+  workDate     DateTime
+  minutes      Int
+  note         String?  @db.Text
+  task         Task     @relation(fields: [taskId], references: [id], onDelete: Cascade, map: "TaskTimeEntry_taskId_fkey")
+  employee     Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade, map: "TaskTimeEntry_employeeId_fkey")
+  recordedBy   User     @relation(fields: [recordedById], references: [id], onDelete: Restrict, map: "TaskTimeEntry_recordedById_fkey")
+  createdAt    DateTime @default(now())
+
+  @@index([taskId], map: "TaskTimeEntry_taskId_idx")
+  @@index([employeeId, workDate], map: "TaskTimeEntry_employeeId_workDate_idx")
+  @@map("tasks_TaskTimeEntry")
+}
+
+model TaskAssignee {
+  taskId     String
+  employeeId String
+  task       Task     @relation(fields: [taskId], references: [id], onDelete: Cascade, map: "TaskAssignee_taskId_fkey")
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade, map: "TaskAssignee_employeeId_fkey")
+  assignedAt DateTime @default(now())
+
+  @@id([taskId, employeeId])
+  @@index([employeeId], map: "TaskAssignee_employeeId_idx")
+  @@map("tasks_TaskAssignee")
+}
+
+model TaskAttachment {
+  id        String   @id @default(cuid())
+  taskId    String
+  fileName  String
+  fileUrl   String
+  mimeType  String
+  fileSize  Int
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade, map: "TaskAttachment_taskId_fkey")
+  createdAt DateTime @default(now())
+
+  @@index([taskId], map: "TaskAttachment_taskId_idx")
+  @@map("tasks_TaskAttachment")
+}
+
+model TaskComment {
+  id        String   @id @default(cuid())
+  taskId    String
+  authorId  String
+  body      String   @db.Text
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade, map: "TaskComment_taskId_fkey")
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade, map: "TaskComment_authorId_fkey")
+  createdAt DateTime @default(now())
+
+  @@index([taskId], map: "TaskComment_taskId_idx")
+  @@map("tasks_TaskComment")
+}
+
+model Department {
+  buildingProducts BuildingDepartmentProduct[]
+  buildingExpenses BuildingExpense[]
+  buildingRequests BuildingRequest[]
+  cashFlows FinanceCashFlow[]
+  type String @default("office")
+  inventoryOrders InventoryDepartmentOrder[]
+  id              String           @id @default(cuid())
+  code            String           @unique(map: "Department_code_key")
+  name            String           @unique(map: "Department_name_key")
+  description     String?
+  managerId       String?
+  status          String           @default("active")
+  manager         Employee?        @relation("DepartmentManager", fields: [managerId], references: [id], onDelete: SetNull, map: "Department_managerId_fkey")
+  employees       Employee[]       @relation("DepartmentEmployees")
+  healthStaff     HealthStaff[]
+  appointments    Appointment[]
+  serviceAdvances ServiceAdvance[]
+  meetings        Meeting[]
+  projects        Project[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  @@index([managerId], map: "Department_managerId_idx")
+  @@map("hr_Department")
+}
+
+model BuildingProduct {
+  id String @id @default(cuid())
+  name String
+  category String
+  barcode String? @unique
+  price Decimal @db.Decimal(14, 2)
+  active Boolean @default(true)
+  departments BuildingDepartmentProduct[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@map("building_Product")
+}
+
+model BuildingDepartmentProduct {
+  id String @id @default(cuid())
+  departmentId String?
+  productId String
+  quantity Int @default(0)
+  department Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  product BuildingProduct @relation(fields: [productId], references: [id], onDelete: Restrict)
+  updatedAt DateTime @updatedAt
+  @@unique([departmentId, productId])
+  @@map("building_DepartmentProduct")
+}
+
+model BuildingExpense {
+  id String @id @default(cuid())
+  departmentId String?
+  category String
+  description String
+  amount Decimal @db.Decimal(14, 2)
+  date DateTime @db.Date
+  paidBy String
+  note String @db.Text
+  createdBy String
+  department Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([departmentId, date])
+  @@map("building_Expense")
+}
+
+model BuildingRequest {
+  paidAmount Decimal @default(0) @db.Decimal(14, 2)
+  paymentMethod String @default("cash")
+  invoiceNumber String?
+  attachmentUrl String? @db.Text
+  id String @id @default(cuid())
+  departmentId String?
+  kind String
+  status String @default("draft")
+  note String @db.Text
+  items Json
+  history Json
+  createdBy String
+  department Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([departmentId, status])
+  @@map("building_Request")
+}
+
+model Meeting {
+  id            String               @id @default(cuid())
+  title         String
+  roomCode      String               @unique(map: "Meeting_roomCode_key")
+  departmentId  String?
+  creatorId     String
+  status        String               @default("active")
+  createdAt     DateTime             @default(now())
+  endedAt       DateTime?
+  department    Department?          @relation(fields: [departmentId], references: [id], onDelete: SetNull, map: "Meeting_departmentId_fkey")
+  creator       User                 @relation("MeetingCreator", fields: [creatorId], references: [id], onDelete: Cascade, map: "Meeting_creatorId_fkey")
+  participants  MeetingParticipant[]
+  notifications Notification[]
+
+  @@index([departmentId, status], map: "Meeting_departmentId_status_idx")
+  @@index([creatorId], map: "Meeting_creatorId_idx")
+  @@map("meetings_Meeting")
+}
+
+model MeetingParticipant {
+  id        String    @id @default(cuid())
+  meetingId String
+  userId    String
+  joinedAt  DateTime  @default(now())
+  leftAt    DateTime?
+  meeting   Meeting   @relation(fields: [meetingId], references: [id], onDelete: Cascade, map: "MeetingParticipant_meetingId_fkey")
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade, map: "MeetingParticipant_userId_fkey")
+
+  @@index([meetingId], map: "MeetingParticipant_meetingId_idx")
+  @@index([userId], map: "MeetingParticipant_userId_idx")
+  @@map("meetings_MeetingParticipant")
+}
+
+model HealthStaff {
+  id                   String                @id @default(cuid())
+  employeeId           String                @unique(map: "HealthStaff_employeeId_key")
+  departmentId         String?
+  staffType            String
+  specialization       String?
+  licenseNumber        String?               @unique(map: "HealthStaff_licenseNumber_key")
+  biography            String?               @db.Text
+  publicBookingEnabled Boolean               @default(false)
+  status               String                @default("active")
+  employee             Employee              @relation(fields: [employeeId], references: [id], onDelete: Cascade, map: "HealthStaff_employeeId_fkey")
+  department           Department?           @relation(fields: [departmentId], references: [id], onDelete: SetNull, map: "HealthStaff_departmentId_fkey")
+  appointments         Appointment[]
+  surgeryAppointments  SurgeryAppointment[]
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  specializationEntry  DoctorSpecialization? @relation(fields: [specialization], references: [name], onDelete: SetNull, onUpdate: Cascade)
+
+  @@index([departmentId], map: "HealthStaff_departmentId_idx")
+  @@index([staffType], map: "HealthStaff_staffType_idx")
+  @@map("healthcare_HealthStaff")
+}
+
+model CrmLead {
+  laboratoryOrders LaboratoryOrder[]
+  id                  String                 @id @default(cuid())
+  code                String?                @unique(map: "CrmLead_code_key")
+  name                String
+  phone               String
+  whatsappPhone       String?                @unique(map: "CrmLead_whatsappPhone_key")
+  secondaryPhone      String?
+  age                 Int?
+  dateOfBirth         DateTime?
+  gender              String?
+  maritalStatus       String?
+  preferredLanguage   String?
+  address             String?
+  country             String?
+  city                String?
+  email               String?
+  source              String?
+  leadSourceChannel   String?
+  contactMethod       String?
+  patientType         String?
+  referralPersona     String?
+  referralName        String?
+  referralPhone       String?
+  referralAddress     String?
+  referralNote        String?                @db.Text
+  interest            String?
+  competitorsNote     String?                @db.Text
+  notes               String?                @db.Text
+  satisfactionScore   Int?                   @default(0)
+  knowledgeRating     Int?
+  budgetRange         String?
+  decisionInfluencers String?                @db.Text
+  painPoints          String?                @db.Text
+  status              String                 @default("new")
+  convertedPatientId  String?
+  convertedPatient    Patient?               @relation(fields: [convertedPatientId], references: [id], onDelete: SetNull, map: "CrmLead_convertedPatientId_fkey")
+  notifications       Notification[]
+  statusHistory       CrmLeadStatusHistory[]
+  attachments         CrmLeadAttachment[]
+  whatsappConversations CrmWhatsappConversation[]
+  createdAt           DateTime               @default(now())
+  updatedAt           DateTime               @updatedAt
+
+  @@index([status, createdAt], map: "CrmLead_status_createdAt_idx")
+  @@index([phone], map: "CrmLead_phone_idx")
+  @@map("crm_CrmLead")
+}
+
+model CrmWhatsappConversation {
+  channel       String               @default("whatsapp")
+  isDemo        Boolean              @default(false)
+  id            String               @id @default(cuid())
+  phone         String               @unique(map: "CrmWhatsappConversation_phone_key")
+  profileName   String?
+  leadId        String?
+  lead          CrmLead?             @relation(fields: [leadId], references: [id], onDelete: SetNull, map: "CrmWhatsappConversation_leadId_fkey")
+  messages      CrmWhatsappMessage[]
+  lastMessageAt DateTime             @default(now())
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+
+  @@index([lastMessageAt], map: "CrmWhatsappConversation_lastMessageAt_idx")
+  @@index([leadId], map: "CrmWhatsappConversation_leadId_idx")
+  @@map("crm_lead_convarasations")
+}
+
+model CrmWhatsappMessage {
+  id             String                  @id @default(cuid())
+  externalId     String?                 @unique(map: "CrmWhatsappMessage_externalId_key")
+  conversationId String
+  conversation   CrmWhatsappConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade, map: "CrmWhatsappMessage_conversationId_fkey")
+  direction      String
+  messageType    String                  @default("text")
+  body           String?                 @db.Text
+  status         String                  @default("received")
+  sentAt         DateTime                @default(now())
+  rawPayload     Json?
+  createdAt      DateTime                @default(now())
+
+  @@index([conversationId, sentAt], map: "CrmWhatsappMessage_conversationId_sentAt_idx")
+  @@map("crm_leadinbox")
+}
+
+model CrmLeadAttachment {
+  id        String   @id @default(cuid())
+  leadId    String
+  fileName  String
+  fileUrl   String
+  mimeType  String?
+  fileSize  Int?
+  createdAt DateTime @default(now())
+  lead      CrmLead  @relation(fields: [leadId], references: [id], onDelete: Cascade, map: "CrmLeadAttachment_leadId_fkey")
+
+  @@index([leadId, createdAt], map: "CrmLeadAttachment_leadId_createdAt_idx")
+  @@map("crm_CrmLeadAttachment")
+}
+
+model CrmLeadStatusHistory {
+  id         String   @id @default(cuid())
+  leadId     String
+  fromStatus String?
+  toStatus   String
+  createdAt  DateTime @default(now())
+  lead       CrmLead  @relation(fields: [leadId], references: [id], onDelete: Cascade, map: "CrmLeadStatusHistory_leadId_fkey")
+
+  @@index([leadId, createdAt], map: "CrmLeadStatusHistory_leadId_createdAt_idx")
+  @@map("crm_CrmLeadStatusHistory")
+}
+
+model Patient {
+  laboratoryOrders LaboratoryOrder[]
+  prescriptions PatientPrescription[]
+  icuCases InventoryIcuCase[]
+  id                  String                  @id @default(cuid())
+  patientCode         String                  @unique(map: "Patient_patientCode_key")
+  firstName           String
+  lastName            String
+  phone               String
+  email               String?
+  dateOfBirth         DateTime?
+  gender              String?
+  address             String?
+  bloodType           String?
+  weightKg            Float?
+  heightCm            Float?
+  isMarried           Boolean                 @default(false)
+  childrenCount       Int                     @default(0)
+  hasDiabetes         Boolean                 @default(false)
+  hasHypertension     Boolean                 @default(false)
+  allergies           String?                 @db.Text
+  medicalNotes        String?                 @db.Text
+  status              String                  @default("active")
+  followUpDate        DateTime?
+  surgeryAppointments SurgeryAppointment[]
+  payments            PatientPayment[]
+  sourceLeads         CrmLead[]
+  formSubmissions     PatientFormSubmission[]
+  referrals           PatientReferral[]
+  createdAt           DateTime                @default(now())
+  updatedAt           DateTime                @updatedAt
+
+  @@index([phone], map: "Patient_phone_idx")
+  @@index([status], map: "Patient_status_idx")
+  @@map("healthcare_Patient")
+}
+
+model PatientReferral {
+  id                   String   @id @default(cuid())
+  patientId            String
+  referrerName         String
+  referrerPhone        String?
+  referrerProfession   String?
+  referrerAddress      String?
+  direction            String   @default("inbound")
+  referralPersona      String?
+  referringPatientName String?
+  referralType         String   @default("patient")
+  referredAt           DateTime @default(now())
+  notes                String?  @db.Text
+  status               String   @default("active")
+  patient              Patient  @relation(fields: [patientId], references: [id], onDelete: Cascade, map: "PatientReferral_patientId_fkey")
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@index([patientId, referredAt], map: "PatientReferral_patientId_referredAt_idx")
+  @@index([status], map: "PatientReferral_status_idx")
+  @@map("healthcare_PatientReferral")
+}
+
+model CrmFormTemplate {
+  id          String                  @id @default(cuid())
+  code        String                  @unique(map: "CrmFormTemplate_code_key")
+  name        String
+  description String?                 @db.Text
+  category    String                  @default("clinical")
+  fields      Json
+  status      String                  @default("active")
+  submissions PatientFormSubmission[]
+  createdAt   DateTime                @default(now())
+  updatedAt   DateTime                @updatedAt
+
+  @@index([category, status], map: "CrmFormTemplate_category_status_idx")
+  @@map("crm_CrmFormTemplate")
+}
+
+model PatientFormSubmission {
+  id             String          @id @default(cuid())
+  patientId      String
+  formTemplateId String
+  data           Json
+  submittedById  String?
+  submittedBy User? @relation(fields: [submittedById], references: [id], onDelete: SetNull)
+  @@index([submittedById])
+  patient        Patient         @relation(fields: [patientId], references: [id], onDelete: Cascade, map: "PatientFormSubmission_patientId_fkey")
+  formTemplate   CrmFormTemplate @relation(fields: [formTemplateId], references: [id], onDelete: Restrict, map: "PatientFormSubmission_formTemplateId_fkey")
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  @@index([patientId, createdAt], map: "PatientFormSubmission_patientId_createdAt_idx")
+  @@index([formTemplateId], map: "PatientFormSubmission_formTemplateId_idx")
+  @@map("healthcare_PatientFormSubmission")
+}
+
+model Surgery {
+  id              String               @id @default(cuid())
+  code            String               @unique(map: "Surgery_code_key")
+  name            String
+  description     String?              @db.Text
+  durationMinutes Int
+  basePrice       Decimal              @db.Decimal(12, 2)
+  status          String               @default("active")
+  appointments    SurgeryAppointment[]
+  createdAt       DateTime             @default(now())
+  updatedAt       DateTime             @updatedAt
+
+  @@map("healthcare_Surgery")
+}
+
+model SurgeryAppointment {
+  id            String           @id @default(cuid())
+  patientId     String
+  doctorId      String?
+  surgeryId     String
+  scheduledAt   DateTime
+  operatingRoom String?
+  status        String           @default("scheduled")
+  preOpNotes    String?          @db.Text
+  postOpNotes   String?          @db.Text
+  patient       Patient          @relation(fields: [patientId], references: [id], onDelete: Restrict, map: "SurgeryAppointment_patientId_fkey")
+  doctor        HealthStaff?     @relation(fields: [doctorId], references: [id], onDelete: SetNull, map: "healthcare_SurgeryAppointment_doctorId_fkey")
+  surgery       Surgery          @relation(fields: [surgeryId], references: [id], onDelete: Restrict, map: "SurgeryAppointment_surgeryId_fkey")
+  payments      PatientPayment[]
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  @@index([scheduledAt, status], map: "SurgeryAppointment_scheduledAt_status_idx")
+  @@index([patientId], map: "SurgeryAppointment_patientId_idx")
+  @@index([doctorId], map: "SurgeryAppointment_doctorId_idx")
+  @@map("healthcare_SurgeryAppointment")
+}
+
+model PatientPayment {
+  id                   String              @id @default(cuid())
+  patientId            String
+  surgeryAppointmentId String?
+  amount               Decimal             @db.Decimal(12, 2)
+  paymentMethod        String
+  reference            String?
+  notes                String?             @db.Text
+  paidAt               DateTime            @default(now())
+  status               String              @default("paid")
+  patient              Patient             @relation(fields: [patientId], references: [id], onDelete: Restrict, map: "PatientPayment_patientId_fkey")
+  surgeryAppointment   SurgeryAppointment? @relation(fields: [surgeryAppointmentId], references: [id], onDelete: SetNull, map: "PatientPayment_surgeryAppointmentId_fkey")
+  createdAt            DateTime            @default(now())
+  updatedAt            DateTime            @updatedAt
+
+  @@index([patientId, paidAt], map: "PatientPayment_patientId_paidAt_idx")
+  @@index([surgeryAppointmentId], map: "PatientPayment_surgeryAppointmentId_idx")
+  @@map("healthcare_PatientPayment")
+}
+
+model Appointment {
+  laboratoryOrders LaboratoryOrder[]
+  id              String           @id @default(cuid())
+  patientName     String
+  patientPhone    String
+  patientEmail    String?
+  doctorId        String?
+  departmentId    String?
+  scheduledAt     DateTime
+  durationMinutes Int              @default(30)
+  reason          String?
+  notes           String?          @db.Text
+  status          String           @default("pending")
+  source          String           @default("admin")
+  doctor          HealthStaff?     @relation(fields: [doctorId], references: [id], onDelete: SetNull, map: "crm_Appointment_doctorId_fkey")
+  department      Department?      @relation(fields: [departmentId], references: [id], onDelete: SetNull, map: "Appointment_departmentId_fkey")
+  serviceAdvances ServiceAdvance[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  @@index([scheduledAt], map: "Appointment_scheduledAt_idx")
+  @@index([doctorId, scheduledAt], map: "Appointment_doctorId_scheduledAt_idx")
+  @@index([departmentId], map: "Appointment_departmentId_idx")
+  @@map("crm_Appointment")
+}
+
+model EmployeeSalary {
+  id            String    @id @default(cuid())
+  employeeId    String
+  baseSalary    Float
+  currencyId    String
+  payType       String
+  effectiveFrom DateTime
+  effectiveTo   DateTime?
+  employee      Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade, map: "EmployeeSalary_employeeId_fkey")
+  payrolls      Payroll[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([employeeId], map: "EmployeeSalary_employeeId_idx")
+  @@map("hr_EmployeeSalary")
+}
+
+model EmployeeAttendance {
+  id                String    @id @default(cuid())
+  employeeId        String
+  attendanceDate    DateTime
+  checkIn           DateTime?
+  checkOut          DateTime?
+  workedMinutes     Int       @default(0)
+  lateMinutes       Int       @default(0)
+  earlyLeaveMinutes Int       @default(0)
+  overtimeMinutes   Int       @default(0)
+  status            String    @default("present")
+  employee          Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade, map: "EmployeeAttendance_employeeId_fkey")
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@unique([employeeId, attendanceDate], map: "EmployeeAttendance_employeeId_attendanceDate_key")
+  @@index([attendanceDate], map: "EmployeeAttendance_attendanceDate_idx")
+  @@map("hr_EmployeeAttendance")
+}
+
+model AttendancePermission {
+  id               String   @id @default(cuid())
+  employeeId       String
+  permissionType   String
+  fromDate         DateTime
+  toDate           DateTime
+  permittedMinutes Int?
+  reason           String?  @db.Text
+  status           String   @default("approved")
+  employee         Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade, map: "AttendancePermission_employeeId_fkey")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  leaveType        String?
+
+  @@index([employeeId, fromDate, toDate], map: "AttendancePermission_employeeId_fromDate_toDate_idx")
+  @@index([status], map: "AttendancePermission_status_idx")
+  @@map("hr_AttendancePermission")
+}
+
+model Payroll {
+  id               String          @id @default(cuid())
+  employeeId       String
+  salaryId         String?
+  year             Int
+  month            Int
+  baseSalary       Float
+  overtimeAmount   Float           @default(0)
+  bonusAmount      Float           @default(0)
+  allowanceAmount  Float           @default(0)
+  lateDeduction    Float           @default(0)
+  absenceDeduction Float           @default(0)
+  otherDeduction   Float           @default(0)
+  grossSalary      Float
+  totalDeduction   Float
+  netSalary        Float
+  status           String          @default("draft")
+  paidAt           DateTime?
+  employee         Employee        @relation(fields: [employeeId], references: [id], onDelete: Cascade, map: "Payroll_employeeId_fkey")
+  salary           EmployeeSalary? @relation(fields: [salaryId], references: [id], onDelete: SetNull, map: "hr_Payroll_salaryId_fkey")
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  @@unique([employeeId, year, month], map: "Payroll_employeeId_year_month_key")
+  @@index([salaryId], map: "Payroll_salaryId_idx")
+  @@map("hr_Payroll")
+}
+
+model PayrollAdjustment {
+  id         String   @id @default(cuid())
+  employeeId String
+  year       Int
+  month      Int
+  type       String
+  amount     Float
+  reason     String   @db.Text
+  sourceType String?
+  sourceId   String?
+  appliedAt  DateTime @default(now())
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade, map: "PayrollAdjustment_employeeId_fkey")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([sourceType, sourceId], map: "PayrollAdjustment_sourceType_sourceId_key")
+  @@index([employeeId, year, month], map: "PayrollAdjustment_employeeId_year_month_idx")
+  @@index([appliedAt], map: "PayrollAdjustment_appliedAt_idx")
+  @@index([year, month, type], map: "PayrollAdjustment_year_month_type_idx")
+  @@map("hr_PayrollAdjustment")
+}
+
+model SalaryAdvance {
+  id                 String    @id @default(cuid())
+  employeeId         String
+  amount             Float
+  currency           String    @default("USD")
+  requestedAt        DateTime
+  approvedAt         DateTime?
+  deductionStartDate DateTime?
+  installments       Int       @default(1)
+  deductedAmount     Float     @default(0)
+  remainingAmount    Float
+  status             String    @default("requested")
+  notes              String?   @db.Text
+  employee           Employee  @relation(fields: [employeeId], references: [id], onDelete: Restrict, map: "SalaryAdvance_employeeId_fkey")
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  @@index([employeeId], map: "SalaryAdvance_employeeId_idx")
+  @@index([status], map: "SalaryAdvance_status_idx")
+  @@index([requestedAt], map: "SalaryAdvance_requestedAt_idx")
+  @@map("hr_SalaryAdvance")
+}
+
+model AccountingAccount {
+  id        String              @id @default(cuid())
+  code      String              @unique(map: "AccountingAccount_code_key")
+  name      String
+  type      String
+  parentId  String?
+  currency  String              @default("USD")
+  status    String              @default("active")
+  parent    AccountingAccount?  @relation("AccountHierarchy", fields: [parentId], references: [id], onDelete: SetNull, map: "AccountingAccount_parentId_fkey")
+  children  AccountingAccount[] @relation("AccountHierarchy")
+  lines     JournalLine[]
+  createdAt DateTime            @default(now())
+  updatedAt DateTime            @updatedAt
+
+  @@index([type], map: "AccountingAccount_type_idx")
+  @@index([parentId], map: "AccountingAccount_parentId_idx")
+  @@map("accounting_AccountingAccount")
+}
+
+model JournalEntry {
+  id          String        @id @default(cuid())
+  entryNumber String        @unique(map: "JournalEntry_entryNumber_key")
+  entryDate   DateTime
+  description String
+  reference   String?
+  status      String        @default("draft")
+  lines       JournalLine[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([entryDate], map: "JournalEntry_entryDate_idx")
+  @@index([status], map: "JournalEntry_status_idx")
+  @@map("accounting_JournalEntry")
+}
+
+model JournalLine {
+  id          String            @id @default(cuid())
+  entryId     String
+  accountId   String
+  description String?
+  debit       Float             @default(0)
+  credit      Float             @default(0)
+  entry       JournalEntry      @relation(fields: [entryId], references: [id], onDelete: Cascade, map: "JournalLine_entryId_fkey")
+  account     AccountingAccount @relation(fields: [accountId], references: [id], onDelete: Restrict, map: "JournalLine_accountId_fkey")
+
+  @@index([entryId], map: "JournalLine_entryId_idx")
+  @@index([accountId], map: "JournalLine_accountId_idx")
+  @@map("accounting_JournalLine")
+}
+
+model BillingCustomer {
+  id        String           @id @default(cuid())
+  code      String           @unique(map: "BillingCustomer_code_key")
+  name      String
+  phone     String?
+  email     String?
+  address   String?          @db.Text
+  taxNumber String?
+  status    String           @default("active")
+  invoices  BillingInvoice[]
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  @@map("billing_BillingCustomer")
+}
+
+model BillingInvoice {
+  laboratoryOrder LaboratoryOrder?
+  id             String               @id @default(cuid())
+  invoiceNumber  String               @unique(map: "BillingInvoice_invoiceNumber_key")
+  customerId     String
+  issueDate      DateTime
+  dueDate        DateTime?
+  currency       String               @default("USD")
+  subtotal       Float
+  discountAmount Float                @default(0)
+  taxAmount      Float                @default(0)
+  totalAmount    Float
+  paidAmount     Float                @default(0)
+  balanceAmount  Float
+  status         String               @default("draft")
+  notes          String?              @db.Text
+  customer       BillingCustomer      @relation(fields: [customerId], references: [id], onDelete: Restrict, map: "BillingInvoice_customerId_fkey")
+  items          BillingInvoiceItem[]
+  payments       BillingPayment[]
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+
+  @@index([customerId], map: "BillingInvoice_customerId_idx")
+  @@index([issueDate], map: "BillingInvoice_issueDate_idx")
+  @@index([status], map: "BillingInvoice_status_idx")
+  @@map("billing_BillingInvoice")
+}
+
+model BillingInvoiceItem {
+  id          String         @id @default(cuid())
+  invoiceId   String
+  description String
+  quantity    Float
+  unitPrice   Float
+  discount    Float          @default(0)
+  taxRate     Float          @default(0)
+  lineTotal   Float
+  invoice     BillingInvoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade, map: "BillingInvoiceItem_invoiceId_fkey")
+
+  @@index([invoiceId], map: "BillingInvoiceItem_invoiceId_idx")
+  @@map("billing_BillingInvoiceItem")
+}
+
+model BillingPayment {
+  laboratoryReceipt LaboratoryPaymentReceipt?
+  id        String         @id @default(cuid())
+  invoiceId String
+  amount    Float
+  method    String
+  reference String?
+  paidAt    DateTime       @default(now())
+  notes     String?
+  invoice   BillingInvoice @relation(fields: [invoiceId], references: [id], onDelete: Restrict, map: "BillingPayment_invoiceId_fkey")
+  createdAt DateTime       @default(now())
+
+  @@index([invoiceId], map: "BillingPayment_invoiceId_idx")
+  @@index([paidAt], map: "BillingPayment_paidAt_idx")
+  @@map("billing_BillingPayment")
+}
+
+model ServiceAdvance {
+  id            String       @id @default(cuid())
+  receiptNumber String       @unique(map: "ServiceAdvance_receiptNumber_key")
+  patientName   String
+  patientPhone  String?
+  departmentId  String?
+  appointmentId String?
+  amount        Float
+  appliedAmount Float        @default(0)
+  balanceAmount Float
+  currency      String       @default("USD")
+  method        String
+  reference     String?
+  receivedAt    DateTime     @default(now())
+  status        String       @default("open")
+  notes         String?      @db.Text
+  department    Department?  @relation(fields: [departmentId], references: [id], onDelete: SetNull, map: "ServiceAdvance_departmentId_fkey")
+  appointment   Appointment? @relation(fields: [appointmentId], references: [id], onDelete: SetNull, map: "ServiceAdvance_appointmentId_fkey")
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@index([departmentId], map: "ServiceAdvance_departmentId_idx")
+  @@index([appointmentId], map: "ServiceAdvance_appointmentId_idx")
+  @@index([receivedAt], map: "ServiceAdvance_receivedAt_idx")
+  @@index([status], map: "ServiceAdvance_status_idx")
+  @@map("billing_ServiceAdvance")
+}
+
+model FinanceBudget {
+  id            String   @id @default(cuid())
+  name          String
+  fiscalYear    Int
+  department    String?
+  category      String
+  plannedAmount Float
+  currency      String   @default("USD")
+  status        String   @default("draft")
+  notes         String?  @db.Text
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([fiscalYear], map: "FinanceBudget_fiscalYear_idx")
+  @@index([status], map: "FinanceBudget_status_idx")
+  @@map("finance_FinanceBudget")
+}
+
+model FinanceCashFlow {
+  sourceType String?
+  sourceId String?
+  sourceUrl String?
+  sourceHash String?
+  cashAccountId String?
+  cashAccount FinanceCashAccount? @relation(fields: [cashAccountId], references: [id], onDelete: Restrict)
+  createdBy String?
+  approvedBy String?
+  approvedAt DateTime?
+  audits FinanceCashFlowAudit[]
+  @@unique([sourceType, sourceId])
+  @@index([cashAccountId])
+  departmentId String?
+  department Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  id          String   @id @default(cuid())
+  flowDate    DateTime
+  flowType    String
+  category    String
+  amount      Decimal @db.Decimal(14, 2)
+  currency    String   @default("USD")
+  description String
+  status      String   @default("planned")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([departmentId, flowDate])
+  @@index([flowDate], map: "FinanceCashFlow_flowDate_idx")
+  @@index([flowType], map: "FinanceCashFlow_flowType_idx")
+  @@map("finance_FinanceCashFlow")
+}
+
+model FinanceForecast {
+  id               String   @id @default(cuid())
+  name             String
+  scenario         String   @default("base")
+  periodStart      DateTime
+  periodEnd        DateTime
+  projectedRevenue Float
+  projectedExpense Float
+  currency         String   @default("USD")
+  status           String   @default("draft")
+  notes            String?  @db.Text
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([periodStart, periodEnd], map: "FinanceForecast_periodStart_periodEnd_idx")
+  @@index([scenario], map: "FinanceForecast_scenario_idx")
+  @@map("finance_FinanceForecast")
+}
+
+model FinanceFunding {
+  id              String    @id @default(cuid())
+  sourceName      String
+  fundingType     String
+  committedAmount Float
+  receivedAmount  Float     @default(0)
+  currency        String    @default("USD")
+  startDate       DateTime
+  endDate         DateTime?
+  interestRate    Float     @default(0)
+  status          String    @default("planned")
+  notes           String?   @db.Text
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([status], map: "FinanceFunding_status_idx")
+  @@index([startDate], map: "FinanceFunding_startDate_idx")
+  @@map("finance_FinanceFunding")
+}
+
+model ProductCategory {
+  id          String             @id @default(cuid())
+  name        String             @unique(map: "ProductCategory_name_key")
+  description String?
+  status      String             @default("active")
+  products    InventoryProduct[]
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  @@map("inventory_ProductCategory")
+}
+
+model ProductBrand {
+  id          String             @id @default(cuid())
+  name        String             @unique(map: "product_brands_name_key")
+  description String?
+  status      String             @default("active")
+  products    InventoryProduct[]
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  @@map("inventory_ProductBrand")
+}
+
+model InventoryProduct {
+  doseMgKgDay Float?
+  dosesPerDay Float?
+  concentrationMg Float?
+  concentrationMl Float?
+
+  expiryDate DateTime? @db.Date
+  isSpecial Boolean @default(false)
+  size String?
+  boxPrice Float @default(0)
+  specialProfitRate Float @default(0)
+  specialPrice Float @default(0)
+  productType String @default("patient_use")
+  productionCompany String?
+  id            String                  @id @default(cuid())
+  sku           String                  @unique(map: "InventoryProduct_sku_key")
+  barcode       String?                 @unique(map: "InventoryProduct_barcode_key")
+  name          String
+  categoryId    String?
+  brandId       String?
+  unit          String                  @default("item")
+  costPrice     Float
+  sellingPrice  Float
+  taxRate       Float                   @default(0)
+  discountType  String?
+  discountValue Float                   @default(0)
+  discountStart DateTime?
+  discountEnd   DateTime?
+  status        String                  @default("active")
+  category      ProductCategory?        @relation(fields: [categoryId], references: [id], onDelete: SetNull, map: "InventoryProduct_categoryId_fkey")
+  brand         ProductBrand?           @relation(fields: [brandId], references: [id], onDelete: SetNull, map: "InventoryProduct_brandId_fkey")
+  stocks        InventoryStock[]
+  movements     InventoryMovement[]
+  saleItems     PosSaleItem[]
+  images        InventoryProductImage[]
+  feedback      Feedback[]
+  createdAt     DateTime                @default(now())
+  updatedAt     DateTime                @updatedAt
+
+  @@index([categoryId], map: "InventoryProduct_categoryId_idx")
+  @@index([brandId], map: "InventoryProduct_brandId_idx")
+  @@index([status], map: "InventoryProduct_status_idx")
+  @@map("inventory_InventoryProduct")
+}
+
+model HealthcareService {
+  id          String     @id @default(cuid())
+  code        String     @unique(map: "HealthcareService_code_key")
+  name        String
+  description String?    @db.Text
+  price       Float?
+  status      String     @default("active")
+  feedback    Feedback[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@index([status], map: "HealthcareService_status_idx")
+  @@map("healthcare_HealthcareService")
+}
+
+model Feedback {
+  id            String             @id @default(cuid())
+  targetType    String
+  productId     String?
+  serviceId     String?
+  customerName  String
+  customerEmail String?
+  rating        Int
+  comment       String             @db.Text
+  status        String             @default("pending")
+  source        String             @default("website")
+  product       InventoryProduct?  @relation(fields: [productId], references: [id], onDelete: Cascade, map: "Feedback_productId_fkey")
+  service       HealthcareService? @relation(fields: [serviceId], references: [id], onDelete: Cascade, map: "Feedback_serviceId_fkey")
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+
+  @@index([targetType, status], map: "Feedback_targetType_status_idx")
+  @@index([productId], map: "Feedback_productId_idx")
+  @@index([serviceId], map: "Feedback_serviceId_idx")
+  @@index([createdAt], map: "Feedback_createdAt_idx")
+  @@map("crm_Feedback")
+}
+
+model InventoryProductImage {
+  id        String           @id @default(cuid())
+  productId String
+  imageUrl  String
+  isMain    Boolean          @default(false)
+  sortOrder Int              @default(0)
+  product   InventoryProduct @relation(fields: [productId], references: [id], onDelete: Cascade, map: "products_images_productId_fkey")
+  createdAt DateTime         @default(now())
+
+  @@index([productId, sortOrder], map: "products_images_productId_sortOrder_idx")
+  @@map("inventory_InventoryProductImage")
+}
+
+model InventoryWarehouse {
+  assignedUsers User[]
+  id        String              @id @default(cuid())
+  code      String              @unique(map: "InventoryWarehouse_code_key")
+  name      String
+  location  String?
+  status    String              @default("active")
+  stocks    InventoryStock[]
+  movements InventoryMovement[]
+  sales     PosSale[]
+  createdAt DateTime            @default(now())
+  updatedAt DateTime            @updatedAt
+
+  @@map("inventory_InventoryWarehouse")
+}
+
+model InventoryStock {
+  id           String             @id @default(cuid())
+  productId    String
+  warehouseId  String
+  quantity     Float              @default(0)
+  reorderLevel Float              @default(0)
+  anesthesiaMinimum Float @default(0)
+  scrubNurseMinimum Float @default(0)
+  perfusionMinimum Float @default(0)
+  cardiologyMinimum Float @default(0)
+  product      InventoryProduct   @relation(fields: [productId], references: [id], onDelete: Cascade, map: "InventoryStock_productId_fkey")
+  warehouse    InventoryWarehouse @relation(fields: [warehouseId], references: [id], onDelete: Cascade, map: "InventoryStock_warehouseId_fkey")
+
+  @@unique([productId, warehouseId], map: "InventoryStock_productId_warehouseId_key")
+  @@index([warehouseId], map: "InventoryStock_warehouseId_idx")
+  @@map("inventory_InventoryStock")
+}
+
+model InventoryMovement {
+  @@index([movementType, occurredAt, id])
+  id           String             @id @default(cuid())
+  productId    String
+  warehouseId  String
+  movementType String
+  quantity     Float
+  reference    String?
+  notes        String?
+  occurredAt   DateTime           @default(now())
+  product      InventoryProduct   @relation(fields: [productId], references: [id], onDelete: Restrict, map: "InventoryMovement_productId_fkey")
+  warehouse    InventoryWarehouse @relation(fields: [warehouseId], references: [id], onDelete: Restrict, map: "InventoryMovement_warehouseId_fkey")
+
+  @@index([occurredAt], map: "InventoryMovement_occurredAt_idx")
+  @@index([productId], map: "InventoryMovement_productId_idx")
+  @@index([warehouseId], map: "InventoryMovement_warehouseId_idx")
+  @@map("inventory_InventoryMovement")
+}
+
+model PosSale {
+  id             String             @id @default(cuid())
+  saleNumber     String             @unique(map: "PosSale_saleNumber_key")
+  warehouseId    String
+  customerName   String?
+  paymentMethod  String
+  subtotal       Float
+  discountAmount Float              @default(0)
+  taxAmount      Float              @default(0)
+  totalAmount    Float
+  paidAmount     Float
+  changeAmount   Float              @default(0)
+  status         String             @default("completed")
+  cashierName    String?
+  notes          String?
+  soldAt         DateTime           @default(now())
+  warehouse      InventoryWarehouse @relation(fields: [warehouseId], references: [id], onDelete: Restrict, map: "PosSale_warehouseId_fkey")
+  items          PosSaleItem[]
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+
+  @@index([soldAt], map: "PosSale_soldAt_idx")
+  @@index([status], map: "PosSale_status_idx")
+  @@map("pos_PosSale")
+}
+
+model PosSaleItem {
+  id        String           @id @default(cuid())
+  saleId    String
+  productId String
+  quantity  Float
+  unitPrice Float
+  taxRate   Float            @default(0)
+  lineTotal Float
+  sale      PosSale          @relation(fields: [saleId], references: [id], onDelete: Cascade, map: "PosSaleItem_saleId_fkey")
+  product   InventoryProduct @relation(fields: [productId], references: [id], onDelete: Restrict, map: "PosSaleItem_productId_fkey")
+
+  @@index([saleId], map: "PosSaleItem_saleId_idx")
+  @@index([productId], map: "PosSaleItem_productId_idx")
+  @@map("pos_PosSaleItem")
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  userId     String?
+  userName   String?
+  method     String
+  path       String
+  module     String
+  action     String
+  statusCode Int
+  ipAddress  String?
+  userAgent  String?  @db.Text
+  details    Json?
+  durationMs Int
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt], map: "AuditLog_createdAt_idx")
+  @@index([userId, createdAt], map: "AuditLog_userId_createdAt_idx")
+  @@index([module, createdAt], map: "AuditLog_module_createdAt_idx")
+  @@index([action, createdAt], map: "AuditLog_action_createdAt_idx")
+  @@index([statusCode, createdAt], map: "AuditLog_statusCode_createdAt_idx")
+  @@map("system_AuditLog")
+}
+
+model DoctorSpecialization {
+  id    String        @id @default(cuid())
+  name  String        @unique
+  staff HealthStaff[]
+
+  @@map("healthcare_DoctorSpecialization")
+}
+
+model SystemSetting {
+  category  String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+
+  @@map("system_Settings")
+}
+
+model InventoryPurchase {
+  paidAmount    Decimal @default(0) @db.Decimal(18, 2)
+  payments      InventoryPurchasePayment[]
+  status        String   @default("completed")
+  id            String   @id @default(cuid())
+  requestId     String   @unique
+  invoiceNumber String
+  buyDate       DateTime
+  retailer      String
+  salesperson   String?
+  isDebt        Boolean  @default(false)
+  note          String?  @db.Text
+  hasInvoice    Boolean @default(false)
+  attachmentUrl String?
+  totalPrice    Decimal  @db.Decimal(18, 2)
+  items         Json
+  createdAt     DateTime @default(now())
+
+  @@unique([retailer, invoiceNumber])
+  @@map("inventory_InventoryPurchase")
+}
+
+model InventoryPurchasePayment {
+  id String @id @default(cuid())
+  requestId String @unique
+  purchaseId String
+  amount Decimal @db.Decimal(18, 2)
+  paidAt DateTime @default(now())
+  note String? @db.Text
+  purchase InventoryPurchase @relation(fields: [purchaseId], references: [id], onDelete: Restrict)
+  @@index([purchaseId])
+  @@map("inventory_InventoryPurchasePayment")
+}
+
+model InventoryOrder {
+  id String @id @default(cuid())
+  requestId String @unique
+  name String
+  note String? @db.Text
+  items Json
+  totalPrice Decimal @db.Decimal(18, 2)
+  createdAt DateTime @default(now())
+  @@map("inventory_InventoryOrder")
+}
+
+model InventoryDepartmentOrder {
+ department Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+ @@index([departmentId, createdAt])
+ id String @id @default(cuid())
+ departmentId String?
+ departmentName String
+ type String
+ deadline DateTime?
+ note String? @db.Text
+ phone String?
+ items Json
+ status String @default("pending")
+ price Decimal? @db.Decimal(18, 2)
+ reason String? @db.Text
+ createdAt DateTime @default(now())
+ comments InventoryDepartmentOrderComment[]
+ @@map("inventory_InventoryDepartmentOrder")
+}
+model InventoryDepartmentOrderComment {
+ id String @id @default(cuid())
+ orderId String
+ note String @db.Text
+ createdAt DateTime @default(now())
+ order InventoryDepartmentOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+ @@index([orderId])
+ @@map("inventory_InventoryDepartmentOrderComment")
+}
+
+model InventoryRetailer {
+  id String @id @default(cuid())
+  name String @unique @db.VarChar(191)
+  phone String @default("") @db.VarChar(50)
+  email String @default("") @db.VarChar(191)
+  note String? @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model InventoryProductionCompany {
+ id String @id @default(cuid())
+ name String @unique @db.VarChar(191)
+ country String @db.VarChar(191)
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+}
+
+model InventoryCustomer {
+ id String @id @default(cuid())
+ name String @db.VarChar(191)
+ phone String @default("") @db.VarChar(50)
+ email String @default("") @db.VarChar(191)
+ address String @default("") @db.VarChar(500)
+ note String? @db.Text
+ debtThreshold Decimal @default(0) @db.Decimal(14, 2)
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+}
+
+model InventoryIcuCase {
+ @@index([unit, entry, id])
+ isBypass Boolean @default(false)
+ unit String @default("icu")
+ @@index([unit])
+ patientId String?
+ patient Patient? @relation(fields: [patientId], references: [id], onDelete: Restrict)
+ @@index([patientId])
+ id String @id @default(cuid())
+ patientName String @db.VarChar(191)
+ entry DateTime
+ exit DateTime?
+ items Json
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+}
+
+model IcuOperationType {
+  id        String   @id @default(cuid())
+  name      String   @unique(map: "IcuOperationType_name_key") @db.VarChar(191)
+  status    String   @default("active") @db.VarChar(20)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status, name])
+  @@map("healthcare_IcuOperationType")
+}
+
+model PatientPrescription {
+ id String @id @default(cuid())
+ requestId String @unique
+ patientId String
+ prescriberId String
+ patientName String
+ patientCode String
+ prescriberName String
+ notes String @db.Text
+ items Json
+ createdAt DateTime @default(now())
+ patient Patient @relation(fields: [patientId], references: [id], onDelete: Restrict)
+ prescriber User @relation(fields: [prescriberId], references: [id], onDelete: Restrict)
+ @@index([patientId, createdAt])
+ @@index([prescriberId])
+ @@map("healthcare_PatientPrescription")
+}
+
+model LoginAttempt {
+  id String @id @db.VarChar(64)
+  attempts Int @default(0)
+  expiresAt DateTime @db.DateTime(3)
+  @@index([expiresAt], map: "auth_LoginAttempt_expiresAt_idx")
+  @@map("auth_LoginAttempt")
+}
+
+
+model FinanceCashAccount {
+  id String @id @default(cuid())
+  name String
+  type String
+  currency String
+  openingBalance Decimal @db.Decimal(18, 2)
+  openingDate DateTime
+  createdBy String
+  createdAt DateTime @default(now())
+  flows FinanceCashFlow[]
+  @@unique([name, currency])
+  @@map("finance_CashAccount")
+}
+
+model FinanceCashFlowAudit {
+  id String @id @default(cuid())
+  flowId String
+  action String
+  actorId String?
+  before Json?
+  after Json?
+  createdAt DateTime @default(now())
+  flow FinanceCashFlow @relation(fields: [flowId], references: [id], onDelete: Restrict)
+  @@index([flowId, createdAt])
+  @@map("finance_CashFlowAudit")
+}
+
+model LaboratoryTest {
+  id             String @id @default(cuid())
+  code           String @unique
+  name           String
+  specimen       String
+  price          Decimal @db.Decimal(18, 2)
+  unit           String?
+  referenceRange String?
+  status         String @default("active")
+  items          LaboratoryOrderItem[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  @@map("laboratory_Tests")
+}
+
+model LaboratoryDailyQueue {
+  day String @id @db.VarChar(10)
+  nextNumber Int @default(0)
+  @@map("laboratory_DailyQueue")
+}
+
+model LaboratoryOrder {
+  accountingCalledAt DateTime?
+  accountingCalledByName String?
+  receivedAt      DateTime?
+  contactedAt     DateTime?
+  contactedByName String?
+  deliveredAt     DateTime?
+  deliveredByName String?
+  attachments     Json?
+  id              String @id @default(cuid())
+  requestId       String @unique @db.VarChar(36)
+  patientId       String
+  leadId          String?
+  appointmentId   String?
+  invoiceId       String @unique
+  queueDay        String @db.VarChar(10)
+  queueNumber     Int
+  status          String @default("awaiting_payment")
+  notes           String? @db.Text
+  createdByName   String
+  collectedByName String?
+  completedByName String?
+  collectedAt     DateTime?
+  completedAt     DateTime?
+  patient         Patient @relation(fields: [patientId], references: [id], onDelete: Restrict)
+  lead            CrmLead? @relation(fields: [leadId], references: [id], onDelete: SetNull)
+  appointment     Appointment? @relation(fields: [appointmentId], references: [id], onDelete: SetNull)
+  invoice         BillingInvoice @relation(fields: [invoiceId], references: [id], onDelete: Restrict)
+  receipts        LaboratoryPaymentReceipt[]
+  items           LaboratoryOrderItem[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  @@unique([queueDay, queueNumber])
+  @@index([patientId, createdAt])
+  @@index([leadId])
+  @@index([appointmentId])
+  @@index([status, queueDay, queueNumber])
+  @@map("laboratory_Orders")
+}
+
+model LaboratoryOrderItem {
+  id             String @id @default(cuid())
+  orderId        String
+  testId         String?
+  testName       String
+  specimen       String
+  price          Decimal @db.Decimal(18, 2)
+  unit           String?
+  referenceRange String?
+  result         String? @db.Text
+  resultNotes    String? @db.Text
+  order          LaboratoryOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  test           LaboratoryTest? @relation(fields: [testId], references: [id], onDelete: SetNull)
+  @@index([orderId])
+  @@index([testId])
+  @@map("laboratory_OrderItems")
+}
+
+model LaboratoryPaymentReceipt {
+  requestId String @id @db.VarChar(36)
+  orderId String
+  paymentId String @unique
+  order LaboratoryOrder @relation(fields: [orderId], references: [id], onDelete: Restrict)
+  payment BillingPayment @relation(fields: [paymentId], references: [id], onDelete: Restrict)
+  createdAt DateTime @default(now())
+  @@index([orderId])
+  @@map("laboratory_PaymentReceipts")
+}

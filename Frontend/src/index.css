@@ -1,0 +1,450 @@
+@import "tailwindcss";
+
+/* Make every `dark:` utility follow the application's manual theme toggle. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@font-face {
+  font-family: "Arabic";
+  src: url("./assets/fonts/arabic.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kurdish";
+  src: url("./assets/fonts/kurdish.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  /* Legacy teal utilities share the green brand palette. */
+  --color-teal-50: #f2f9f4;
+  --color-teal-100: #e8f5ed;
+  --color-teal-200: #cce5d4;
+  --color-teal-300: #a8e4bc;
+  --color-teal-400: #74d394;
+  --color-teal-500: #00664f;
+  --color-teal-600: #007a59;
+  --color-teal-700: #00664f;
+  --color-teal-800: #00513e;
+  --color-teal-900: #003c30;
+  --color-teal-950: #071b0e;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-brand-bright: #29ad49;
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: #ffffff;
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --background: #f2f9f4;
+  --foreground: #173322;
+  --card: #ffffff;
+  --card-foreground: #173322;
+  --popover: #ffffff;
+  --popover-foreground: #173322;
+  --primary: #00664f;
+  --primary-foreground: #ffffff;
+  --secondary: #e8f5ed;
+  --secondary-foreground: #007a59;
+  --muted: #edf7f0;
+  --muted-foreground: #607567;
+  --accent: #d3efdc;
+  --accent-foreground: #007a59;
+  --destructive: #dc2626;
+  --border: #cce5d4;
+  --input: #b8dac4;
+  --ring: #00664f;
+  --radius: 0.625rem;
+  font-family: "Kurdish", system-ui, sans-serif;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --background: #0b120e;
+  --foreground: #ffffff;
+  --card: #111d15;
+  --card-foreground: #ffffff;
+  --popover: #16251b;
+  --popover-foreground: #ffffff;
+  --primary: #00664f;
+  --primary-foreground: #ffffff;
+  --secondary: #1b3022;
+  --secondary-foreground: #ffffff;
+  --muted: #19271f;
+  --muted-foreground: #a3b8aa;
+  --accent: #203d2a;
+  --accent-foreground: #ffffff;
+  --destructive: #fb7185;
+  --border: #2b4433;
+  --input: #36533f;
+  --ring: #00664f;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #0b120e;
+    --foreground: #ffffff;
+    --card: #111d15;
+    --card-foreground: #ffffff;
+    --popover: #16251b;
+    --popover-foreground: #ffffff;
+    --primary: #00664f;
+    --primary-foreground: #ffffff;
+    --secondary: #1b3022;
+    --secondary-foreground: #ffffff;
+    --muted: #19271f;
+    --muted-foreground: #a3b8aa;
+    --accent: #203d2a;
+    --accent-foreground: #ffffff;
+    --destructive: #fb7185;
+    --border: #2b4433;
+    --input: #36533f;
+    --ring: #00664f;
+    color-scheme: dark;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+  html {
+    @apply bg-background;
+    scroll-behavior: smooth;
+    scrollbar-color: var(--primary) var(--muted);
+    scrollbar-width: thin;
+  }
+  body {
+    @apply m-0 min-h-svh min-w-80 bg-background text-foreground antialiased;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  button,
+  input,
+  select,
+  textarea,
+  option {
+    font: inherit;
+  }
+}
+
+#root {
+  width: 100vw;
+  max-width: none;
+  min-height: 100svh;
+}
+
+.electron-titlebar {
+  -webkit-app-region: drag;
+}
+
+.electron-titlebar button,
+.electron-titlebar a,
+.electron-titlebar input,
+.electron-titlebar select,
+.electron-titlebar [role="button"],
+.electron-window-controls,
+.electron-window-controls * {
+  -webkit-app-region: no-drag;
+}
+
+html[lang="en"],
+html[lang="en"] body {
+  font-family: "Kurdish", system-ui, sans-serif;
+}
+html[lang="ar"],
+html[lang="ar"] body {
+  font-family: "Arabic", "Kurdish", sans-serif;
+}
+html[lang="ku"],
+html[lang="ku"] body {
+  font-family: "Kurdish", "Arabic", sans-serif;
+}
+
+html[lang="en"] [data-sonner-toaster] {
+  font-family: "Kurdish", system-ui, sans-serif !important;
+}
+html[lang="ar"] [data-sonner-toaster] {
+  font-family: "Arabic", "Kurdish", sans-serif !important;
+}
+html[lang="ku"] [data-sonner-toaster] {
+  font-family: "Kurdish", "Arabic", sans-serif !important;
+}
+[data-sonner-toaster] [data-sonner-toast],
+[data-sonner-toaster] [data-sonner-toast] * {
+  font-family: inherit !important;
+}
+
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+*::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+*::-webkit-scrollbar-thumb {
+  border: 2px solid var(--muted);
+  border-radius: 999px;
+  background: var(--primary);
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  border-width: 1px;
+}
+.scrollbar-hidden {
+  scrollbar-width: none;
+}
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar-scroll {
+  scrollbar-color: color-mix(in srgb, var(--foreground) 20%, transparent)
+    transparent;
+  scrollbar-width: thin;
+}
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--foreground) 18%, transparent);
+}
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  border: 0;
+  background: color-mix(in srgb, var(--foreground) 32%, transparent);
+}
+
+.content-scrollbar {
+  scrollbar-color: color-mix(in srgb, var(--muted-foreground) 32%, transparent)
+    transparent;
+  scrollbar-width: thin;
+}
+.content-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.content-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.content-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--muted-foreground) 32%, transparent);
+}
+.content-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--primary) 72%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.print-document {
+  display: none;
+}
+
+/* Some documents, such as monthly payroll, are also the on-screen details
+   view. Keep those visible while retaining the shared print behavior. */
+.print-document.print-document-visible {
+  display: block;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  body.printing-system-logs * {
+    visibility: hidden !important;
+  }
+  body.printing-system-logs .system-logs-print,
+  body.printing-system-logs .system-logs-print * {
+    visibility: visible !important;
+  }
+  body.printing-system-logs .system-logs-print {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    background: white;
+    color: #0f172a;
+  }
+  body.printing-document {
+    background: white !important;
+    color: #0f172a !important;
+  }
+  body.printing-document * {
+    visibility: hidden !important;
+  }
+  body.printing-document .print-document,
+  body.printing-document .print-document * {
+    visibility: visible !important;
+  }
+  body.printing-document .print-document {
+    display: block;
+  }
+  body.printing-document .salary-list-print {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    padding: 7mm 9mm;
+    background: white;
+    color: #0f172a;
+    font-size: 11px;
+  }
+  body.printing-document .salary-list-print .overflow-auto {
+    overflow: visible !important;
+  }
+  body.printing-document .salary-list-print table {
+    width: 100% !important;
+    min-width: 0 !important;
+    table-layout: fixed;
+    font-size: 9px;
+  }
+  body.printing-document .salary-list-print th,
+  body.printing-document .salary-list-print td {
+    padding: 4px 3px;
+    overflow-wrap: anywhere;
+  }
+  body.printing-document .salary-list-print th:nth-child(1),
+  body.printing-document .salary-list-print td:nth-child(1) {
+    width: 3%;
+  }
+  body.printing-document .salary-list-print th:nth-child(2),
+  body.printing-document .salary-list-print td:nth-child(2) {
+    width: 14%;
+  }
+  body.printing-document .salary-list-print th:nth-child(3),
+  body.printing-document .salary-list-print td:nth-child(3),
+  body.printing-document .salary-list-print th:nth-child(5),
+  body.printing-document .salary-list-print td:nth-child(5),
+  body.printing-document .salary-list-print th:nth-child(10),
+  body.printing-document .salary-list-print td:nth-child(10) {
+    width: 10%;
+  }
+  body.printing-document .salary-list-print th:nth-child(4),
+  body.printing-document .salary-list-print td:nth-child(4) {
+    width: 7%;
+  }
+  body.printing-document .salary-list-print th:nth-child(6),
+  body.printing-document .salary-list-print td:nth-child(6) {
+    width: 12%;
+  }
+  body.printing-document .salary-list-print th:nth-child(7),
+  body.printing-document .salary-list-print td:nth-child(7) {
+    width: 8%;
+  }
+  body.printing-document .salary-list-print th:nth-child(8),
+  body.printing-document .salary-list-print td:nth-child(8) {
+    width: 10%;
+  }
+  body.printing-document .salary-list-print th:nth-child(9),
+  body.printing-document .salary-list-print td:nth-child(9) {
+    width: 16%;
+  }
+  .salary-list-print header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: 2px solid #00664f;
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+  }
+  .salary-list-print h1 {
+    color: #00664f;
+    font-size: 28px;
+    font-weight: 800;
+  }
+  .salary-list-print h2 {
+    margin: 18px 0 8px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .salary-list-print table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 18px;
+  }
+  .salary-list-print th,
+  .salary-list-print td {
+    border: 1px solid #cbd5e1;
+    padding: 7px;
+    text-align: start;
+  }
+  .salary-list-print th {
+    background: #eaf4fb;
+    font-weight: 700;
+  }
+  .salary-print-totals {
+    width: 45%;
+    margin-inline-start: auto;
+    margin-top: 18px;
+    border-top: 2px solid #00664f;
+    padding-top: 8px;
+  }
+  .salary-print-totals p {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+  }
+}
+
+/* Consistent ghost styling for edit and delete actions across all pages. */
+[data-action="delete"],
+[data-action="edit"] {
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+[data-action="delete"] {
+  color: #dc2626;
+}
+[data-action="delete"]:hover,
+[data-action="delete"]:focus-visible {
+  background-color: rgb(220 38 38 / 10%);
+  color: #dc2626;
+}
+[data-action="edit"] {
+  color: var(--primary);
+}
+[data-action="edit"]:hover,
+[data-action="edit"]:focus-visible {
+  background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+}
+[data-action="delete"] svg,
+[data-action="edit"] svg {
+  width: 1rem;
+  height: 1rem;
+  color: inherit;
+}

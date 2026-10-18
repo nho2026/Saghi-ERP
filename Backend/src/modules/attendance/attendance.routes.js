@@ -1,0 +1,11 @@
+import { Router } from "express";
+import { requireAuth } from "../../shared/middleware/auth.middleware.js";
+import devices from "./devices/devices.routes.js";
+import people from "./people/people.routes.js";
+import events from "./events/events.routes.js";
+const router = Router();
+router.use(requireAuth);
+router.use("/devices", devices);
+router.use("/people", people);
+router.use("/events", events);
+export default router;

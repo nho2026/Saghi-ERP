@@ -1,0 +1,14 @@
+import { Router } from "express";
+import { view, adjust } from "../shared/inventory.permissions.js";
+import { stockController } from "./stock.controller.js";
+import { stockService } from "./stock.service.js";
+import { inventoryAction } from "../shared/inventory.controller.js";
+import { listStorage } from "./storage.service.js";
+import { listExpiry } from "./expiry.service.js";
+const router = Router();
+router.get("/stock/summary", view, inventoryAction(stockService.summary));
+router.get("/expiry", view, inventoryAction(listExpiry));
+router.get("/stock", view, stockController.list);
+router.get("/storage", view, inventoryAction(listStorage));
+router.post("/adjust", adjust, stockController.adjust);
+export default router;

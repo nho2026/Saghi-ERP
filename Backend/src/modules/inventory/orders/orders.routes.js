@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { view, manage } from "../shared/inventory.permissions.js";
+import { ordersController } from "./orders.controller.js";
+const router = Router();
+router.get("/orders", view, ordersController.list);
+router.patch("/orders/:id", manage, ordersController.update);
+router.post("/orders", manage, ordersController.create);
+router.patch("/orders/:id/arrival", manage, ordersController.arrival);
+router.delete("/orders/:id", manage, ordersController.remove);
+export default router;
