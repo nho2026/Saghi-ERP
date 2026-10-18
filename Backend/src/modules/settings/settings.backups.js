@@ -5,14 +5,14 @@ import { pipeline } from "node:stream/promises";
 import path from "node:path";
 import { getSettings } from "./settings.service.js";
 import { resolveBackupTool } from "./backup-tool.js";
-const directory = path.resolve(process.env.NHO_BACKUP_DIRECTORY || "backups");
+const directory = path.resolve(process.env.BACKUP_DIRECTORY || "backups");
 let busy = false;
 export async function listBackups() {
   await mkdir(directory, { recursive: true, mode: 0o700 });
   return (
     await Promise.all(
       (await readdir(directory))
-        .filter((n) => /^nho-.*\.sql$/.test(n))
+        .filter((n) => /^saghi-.*\.sql$/.test(n))
         .map(async (name) => {
           const info = await stat(path.join(directory, name));
           return {
@@ -34,7 +34,7 @@ export async function createBackup() {
   try {
     const executable = await resolveBackupTool();
     await mkdir(directory, { recursive: true, mode: 0o700 });
-    const name = `nho-${new Date().toISOString().replaceAll(":", "-")}.sql`;
+    const name = `saghi-${new Date().toISOString().replaceAll(":", "-")}.sql`;
     temporary = path.join(directory, `${name}.partial`);
     const url = new URL(process.env.DATABASE_URL);
     const args = [
