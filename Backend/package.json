@@ -22,6 +22,7 @@
     "db:seed-departments": "node scripts/seed-departments.js",
     "db:seed-crm": "node scripts/seed-crm.js",
     "db:seed-access": "node scripts/seed-access-control.js",
+    "db:create-superadmin": "node scripts/create-superadmin.js",
     "db:seed-products": "node scripts/import-products.js",
     "db:provision": "node scripts/provision-mysql.js",
     "setup": "npm run db:provision && npm run db:generate && npm run db:deploy && npm run db:seed",
