@@ -27,6 +27,7 @@
     "db:create-superadmin": "node scripts/create-superadmin.js",
     "db:seed-products": "node scripts/import-products.js",
     "db:provision": "node scripts/provision-mysql.js",
+    "diagnose:api": "node scripts/diagnose-api.js",
     "setup": "npm run db:provision && npm run db:generate && npm run db:deploy && npm run db:seed",
     "test": "node --test"
   },
